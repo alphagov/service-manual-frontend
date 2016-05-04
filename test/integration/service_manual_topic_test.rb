@@ -39,4 +39,12 @@ class ServiceManualTopicTest < ActionDispatch::IntegrationTest
         href: "/service-manual/communities/user-research-community")
     end
   end
+
+  test "it does not apply the accordion if the topic is visually expanded" do
+    Capybara.current_driver = Capybara.javascript_driver
+
+    setup_and_visit_content_item('service_manual_topic')
+
+    assert page.has_css?(".subsection-controls")
+  end
 end
