@@ -34,6 +34,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'poltergeist'
   gem 'webmock', '~> 1.18.0', require: false
   gem 'govuk-content-schema-test-helpers', '1.1.0'
   gem 'pry-byebug'

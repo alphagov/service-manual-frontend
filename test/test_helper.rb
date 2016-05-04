@@ -4,6 +4,7 @@ require 'rails/test_help'
 require 'webmock/minitest'
 require 'support/govuk_content_schema_examples'
 require 'capybara/rails'
+require 'capybara/poltergeist'
 require 'slimmer/test_helpers/shared_templates'
 
 class ActiveSupport::TestCase
@@ -18,10 +19,27 @@ class ActionController::Base
   }
 end
 
+Capybara.default_driver = :rack_test
+Capybara.javascript_driver = :poltergeist
+
 class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
   include Slimmer::TestHelpers::SharedTemplates
+
+  # When running JS tests with Capybara the app and the test runner run
+  # in separate threads. Capybara shoots off http://localhost:<some port>/__identify__
+  # requests to see if the app is ready. We don't want Webmock to block
+  # these requests because the test suite will never run but we also don't
+  # want to allow all localhost requests because we run these tests on VMs that
+  # run a lot of services that might give us a false positive.
+  driver_requests = %r{/__identify__$}
+  WebMock.disable_net_connect! allow: driver_requests
+
+  def after_teardown
+    super
+    Capybara.use_default_driver
+  end
 
   def assert_has_component_metadata_pair(label, value)
     within shared_component_selector("metadata") do
