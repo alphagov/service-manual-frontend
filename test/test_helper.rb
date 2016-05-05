@@ -34,7 +34,7 @@ class ActionDispatch::IntegrationTest
   # want to allow all localhost requests because we run these tests on VMs that
   # run a lot of services that might give us a false positive.
   driver_requests = %r{/__identify__$}
-  WebMock.disable_net_connect! :allow => driver_requests
+  WebMock.disable_net_connect! allow: driver_requests
 
   def after_teardown
     super
