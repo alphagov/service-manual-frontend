@@ -6,12 +6,19 @@
   <!--[if IE 6]><%= stylesheet_link_tag "application-ie6" %><script>var ieVersion = 6;</script><![endif]-->
   <!--[if IE 7]><%= stylesheet_link_tag "application-ie7" %><script>var ieVersion = 7;</script><![endif]-->
   <!--[if IE 8]><%= stylesheet_link_tag "application-ie8" %><script>var ieVersion = 8;</script><![endif]-->
+
+  <%# We have to include jQuery here because it comes from slimmer %>
+  <%# which means we don't have it under test %>
+  <% if Rails.env.test? %>
+    <%= javascript_include_tag "jquery-2.2.3.min" %>
+  <% end %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <%= render partial: 'govuk_component/analytics_meta_tags', locals: { content_item: @content_item.content_item } %>
   <% if content_for(:meta_description).present? %>
     <meta name="description" content="<%= content_for(:meta_description) %>" />
   <% end %>
+
 </head>
 <body>
   <% unless content_for(:simple_header) %>

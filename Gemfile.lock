@@ -55,6 +55,7 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     casperjs (1.0.0)
+    cliver (0.3.2)
     coderay (1.1.0)
     concurrent-ruby (1.0.0)
     crack (0.4.3)
@@ -117,6 +118,11 @@ GEM
       ast (~> 2.2)
     phantomjs (1.9.8.0)
     plek (1.11.0)
+    poltergeist (1.9.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      multi_json (~> 1.0)
+      websocket-driver (>= 0.2.0)
     powerpack (0.1.1)
     pry (0.10.3)
       coderay (~> 1.1.0)
@@ -214,6 +220,9 @@ GEM
     webmock (1.18.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
+    websocket-driver (0.6.3)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.2)
     wraith (3.1.0)
       anemone
       casperjs
@@ -243,6 +252,7 @@ DEPENDENCIES
   logstasher (= 0.6.1)
   phantomjs (~> 1.9.7)
   plek (= 1.11)
+  poltergeist
   pry-byebug
   rails (= 4.1.14.1)
   rails-i18n (>= 4.0.4)
