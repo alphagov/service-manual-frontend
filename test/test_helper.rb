@@ -5,6 +5,7 @@ require 'webmock/minitest'
 require 'support/govuk_content_schema_examples'
 require 'capybara/rails'
 require 'capybara/poltergeist'
+require 'slimmer/test'
 require 'slimmer/test_helpers/shared_templates'
 
 class ActiveSupport::TestCase
@@ -36,9 +37,17 @@ class ActionDispatch::IntegrationTest
   driver_requests = %r{/__identify__$}
   WebMock.disable_net_connect! allow: driver_requests
 
-  def after_teardown
-    super
-    Capybara.use_default_driver
+  def using_javascript_driver(&block)
+    begin
+      Capybara.current_driver = Capybara.javascript_driver
+      use_slimmer = ENV["USE_SLIMMER"]
+      ENV["USE_SLIMMER"] = "true"
+
+      block.call
+    ensure
+      Capybara.use_default_driver
+      ENV.delete("USE_SLIMMER") unless use_slimmer
+    end
   end
 
   def assert_has_component_metadata_pair(label, value)
