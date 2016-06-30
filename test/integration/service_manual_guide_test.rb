@@ -37,7 +37,7 @@ class ServiceManualGuideTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "displays a summary if present" do
+  test "displays the description for a point" do
     setup_and_visit_example('service_manual_guide', 'point_page')
 
     within('.lede') do
@@ -45,7 +45,7 @@ class ServiceManualGuideTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "the lede is not visible unless there is a summary" do
+  test "does not display the description for a normal guide" do
     setup_and_visit_example('service_manual_guide', 'service_manual_guide')
 
     refute page.has_css?('.lede')

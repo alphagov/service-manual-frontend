@@ -80,6 +80,10 @@ class ServiceManualGuidePresenterTest < ActiveSupport::TestCase
     assert_equal expected, guide.content_owners
   end
 
+  test "#show_description? is false if not set" do
+    refute ServiceManualGuidePresenter.new({}).show_description?
+  end
+
 private
 
   def presented_guide(overriden_attributes = {})

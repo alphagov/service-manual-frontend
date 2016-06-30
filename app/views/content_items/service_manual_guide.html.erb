@@ -13,9 +13,9 @@
   <div class="column-two-thirds">
     <%= render "govuk_component/title", title: @content_item.title, context: @content_item.category_title %>
 
-    <% if @content_item.summary.present? %>
+    <% if @content_item.show_description? %>
       <p class="lede lede--with-bottom-margin">
-        <%= @content_item.summary %>
+        <%= @content_item.description %>
       </p>
     <% end %>
   </div>
