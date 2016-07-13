@@ -14,11 +14,14 @@
   <% end %>
 </head>
 <body>
-  <div class="header-proposition">
-    <div class="content">
-      <nav id="proposition-menu">
-        <a href="/" id="proposition-name">Service manual</a>
 
+  <!-- Keep #proposition-menu here, only for the purpose of moving this via Slimmer -->
+  <div id="proposition-menu">
+    <div class="service-manual-header">
+      <div class="service-manual-header-title">
+        <a href="/">Service manual</a>
+      </div>
+      <div class="service-manual-header-search">
         <form id="search" class="site-search" action="/search" method="get" role="search">
           <div class="content">
             <label for="site-search-text">Search the Service Manual</label>
@@ -27,9 +30,10 @@
             <input class="submit" type="submit" value="Search" />
           </div>
         </form>
-      </nav>
+      </div>
     </div>
   </div>
+  <!-- End #proposition-menu wrapper, only for the purpose of moving this via Slimmer -->
 
   <div id="wrapper" class="<%= wrapper_class %>">
     <main role="main" id="content" class="<%= yield(:page_class) %>" lang="<%= I18n.locale %>">
