@@ -1,0 +1,69 @@
+// Override the existing GOV.UK header with proposition
+.js-header-toggle {
+  display: none !important;
+}
+
+#global-header .header-proposition {
+  padding-top: 0;
+}
+
+#global-header.with-proposition #search {
+  margin-top: 0;
+}
+
+@media screen and (max-width: 379px) {
+  #global-header form#search {
+    display: block;
+    width: 100%;
+  }
+}
+
+#global-header .header-proposition #proposition-menu {
+  margin-top: 0;
+}
+
+.service-manual-header-title {
+
+  width: auto;
+  float: left;
+  position: relative;
+
+  @include media (mobile) {
+    top: 7px;
+    font-size: 24px;
+  }
+
+  top: 6px;
+
+  @include core-24;
+
+  font-weight: bold;
+
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+}
+
+.service-manual-header-search {
+
+  margin-top: 4px;
+  @extend %contain-floats;
+
+  @media screen and (max-width: 379px) {
+    width: 100%;
+    float: left;
+  }
+
+  width: 49%;
+  float: right;
+
+  .content {
+    margin: 0 !important;
+  }
+}
