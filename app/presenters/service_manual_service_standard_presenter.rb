@@ -13,17 +13,17 @@ class ServiceManualServiceStandardPresenter < ContentItemPresenter
 private
 
   def points_attributes
-    @_points_attributes ||= details["points"] || []
+    @_points_attributes ||= expanded_links["children"] || []
   end
 
-  def details
-    @_details ||= content_item["details"] || {}
+  def expanded_links
+    @_expanded_links ||= content_item["expanded_links"] || {}
   end
 
   class Point
     include Comparable
 
-    attr_reader :title, :summary, :base_path
+    attr_reader :title, :description, :base_path
 
     def self.load(points_attributes)
       points_attributes.map { |point_attributes| new(point_attributes) }
@@ -31,7 +31,7 @@ private
 
     def initialize(attributes)
       @title = attributes["title"]
-      @summary = attributes["summary"]
+      @description = attributes["description"]
       @base_path = attributes["base_path"]
     end
 
