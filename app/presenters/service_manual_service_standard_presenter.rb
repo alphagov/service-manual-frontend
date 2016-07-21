@@ -13,11 +13,11 @@ class ServiceManualServiceStandardPresenter < ContentItemPresenter
 private
 
   def points_attributes
-    @_points_attributes ||= expanded_links["children"] || []
+    @_points_attributes ||= links["children"] || []
   end
 
-  def expanded_links
-    @_expanded_links ||= content_item["expanded_links"] || {}
+  def links
+    @_links ||= content_item["links"] || {}
   end
 
   class Point

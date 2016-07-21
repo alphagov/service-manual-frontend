@@ -15,7 +15,7 @@ class ContentItemPresenterTest < ActiveSupport::TestCase
 
   test "#points returns points ordered numerically" do
     content_item_hash = {
-      "expanded_links" => {
+      "links" => {
         "children" => [
           { "title" => "3. Title" },
           { "title" => "1. Title" },
