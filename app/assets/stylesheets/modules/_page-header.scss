@@ -6,7 +6,7 @@
 //   <p class="page-header__summary">
 //     How to work in an agile way: principles, tools and governance.
 //   </p>
-//   <p class="page-header__description">
+//   <p class="page-header__intro">
 //     Additional descriptive text can sit here
 //   </p>
 // </div>
@@ -35,7 +35,7 @@
     @include responsive-bottom-margin;
   }
 
-  &__description {
+  &__intro {
     @include core-19;
   }
 

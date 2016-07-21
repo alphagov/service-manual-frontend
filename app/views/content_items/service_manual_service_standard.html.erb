@@ -14,9 +14,9 @@
     <div class="page-header">
       <h1 class="page-header__title"><%= @content_item.title %></h1>
       <p class="page-header__summary">
-        <%= @content_item.content_item["details"]["introduction"] %>
+        <%= @content_item.content_item["description"] %>
       </p>
-      <p class="page-header__description">
+      <p class="page-header__intro">
         <%= @content_item.content_item["details"]["body"] %>
       </p>
     </div>

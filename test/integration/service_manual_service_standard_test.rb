@@ -1,10 +1,12 @@
 require 'test_helper'
 
 class ServiceManualServiceStandardTest < ActionDispatch::IntegrationTest
-  test "service standard page has a title" do
+  test "service standard page has a title, summary and intro" do
     setup_and_visit_example('service_manual_service_standard', 'service_manual_service_standard')
 
-    assert page.has_content?("Digital Service Standard"), "No title found"
+    assert page.has_css?(".page-header__title", text: "Digital Service Standard"), "No title found"
+    assert page.has_css?(".page-header__summary", text: "The Digital Service Standard is a set of 18 criteria"), "No description found"
+    assert page.has_css?(".page-header__intro", text: "All public facing transactional services must meet the standard."), "No body found"
   end
 
   test "service standard page has points" do
