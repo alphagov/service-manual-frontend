@@ -16,9 +16,7 @@ class ContentItemsController < ApplicationController
     #   <input type="hidden" name="filter_manual" value="/service-manual">
     # </form>
     set_slimmer_headers(
-      search_parameters: {
-        "filter_manual" => "/service-manual"
-      }.to_json,
+      remove_search: true
     )
 
     if load_content_item

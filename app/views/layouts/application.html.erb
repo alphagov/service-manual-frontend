@@ -14,9 +14,26 @@
   <% end %>
 </head>
 <body>
-  <% unless content_for(:simple_header) %>
-    <%= render partial: 'govuk_component/government_navigation' %>
-  <% end %>
+
+  <!-- Keep #proposition-menu here, only for the purpose of moving this via Slimmer -->
+  <div id="proposition-menu">
+    <div class="service-manual-header">
+      <div class="service-manual-header-title">
+        <a href="/">Service manual</a>
+      </div>
+      <div class="service-manual-header-search">
+        <form id="search" class="site-search" action="/search" method="get" role="search">
+          <div class="content">
+            <label for="site-search-text">Search the Service Manual</label>
+            <input type="search" name="q" id="site-search-text" title="Search" class="js-search-focus">
+            <input type="hidden" name="filter_manual" value="/service-manual">
+            <input class="submit" type="submit" value="Search" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- End #proposition-menu wrapper, only for the purpose of moving this via Slimmer -->
 
   <div id="wrapper" class="<%= wrapper_class %>">
     <main role="main" id="content" class="<%= yield(:page_class) %>" lang="<%= I18n.locale %>">
