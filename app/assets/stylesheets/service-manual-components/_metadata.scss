@@ -1,7 +1,6 @@
 .metadata {
   @include core-14;
   @extend %contain-floats;
-  margin-bottom: 2em;
 
   dt {
     float: left;

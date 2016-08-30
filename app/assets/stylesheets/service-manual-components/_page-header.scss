@@ -13,8 +13,15 @@
 
 // Here we're using BEM which uses __ to denote an element within a block
 // scss-lint:disable SelectorFormat
+
 .page-header {
-  @include responsive-vertical-margins;
+  margin-top: $gutter-half;
+  margin-bottom: $gutter-half;
+
+  @include media(tablet) {
+    margin-top: $gutter * 1.5;
+    margin-bottom: $gutter * 1.5;
+  }
 
   &__context {
     @include core-24;
@@ -26,13 +33,21 @@
   &__title {
     @include bold-48;
 
-    @include responsive-bottom-margin;
+    margin-bottom: $gutter-half;
+
+    @include media(tablet) {
+      margin-bottom: $gutter * 1.5;
+    }
   }
 
   &__summary {
     @include core-24;
 
-    @include responsive-bottom-margin;
+    margin-bottom: $gutter-half;
+
+    @include media(tablet) {
+      margin-bottom: $gutter * 1.5;
+    }
   }
 
   &__description {

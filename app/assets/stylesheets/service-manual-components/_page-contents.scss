@@ -1,9 +1,9 @@
 .page-contents {
-  margin-top: 1em;
+  // margin-top: 1em;
 
-  @include media(tablet) {
-    margin-top: 2em;
-  }
+  // @include media(tablet) {
+  //   margin-top: 2em;
+  // }
 
   &__title {
     @include bold-16;

@@ -1,25 +1,22 @@
 // The main application stylesheet
 
-// govuk_frontend_toolkit
+// Settings
+// Mixins and varibles from the govuk_frontend_toolkit
 @import "colours";
 @import "measurements";
 @import "shims";
 @import "typography";
 
-// Mixins
-@import "mixins/helpers";
-@import "mixins/margins";
+// Components
+@import "components/change-history";
+@import "components/metadata";
+@import "components/notice";
+@import "components/page-contents";
+@import "components/page-header";
+@import "components/related-content";
+@import "components/service-standard-point";
+@import "components/subsections";
 
-// Modules
-@import "modules/community-contact";
-@import "modules/change-history";
-@import "modules/govspeak-wrapper";
-@import "modules/main-service-manual";
-@import "modules/metadata";
-@import "modules/notice";
-@import "modules/page-contents";
-@import "modules/page-header";
-@import "modules/related-content";
-@import "modules/service-standard-point";
-@import "modules/subsections";
-@import "modules/typography";
+// Utilities
+@import "utilities/alignment";
+@import "utilities/spacing";

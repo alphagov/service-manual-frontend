@@ -1,5 +1,4 @@
 .change-history {
-  margin-top: 30px;
   width: 66%;
 
   &__latest-change {
@@ -10,17 +9,24 @@
 
     dd {
       @include bold-24;
-      margin-bottom: 10px;
     }
+  }
+
+  &__date {
+    display: block;
+    margin-bottom: 0.25em;
   }
 
   &__summary,
   &__reason {
     @include core-16;
     color: $grey-1;
+    margin-bottom: 0.5em;
   }
 
   &__past {
+
+    margin-top: 0.5em;
 
     time {
       @include bold-19;

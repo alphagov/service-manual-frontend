@@ -1,4 +1,4 @@
-<%= content_for :page_class, "service-manual" %>
+<%= content_for :page_class, "u-margin-bottom-large" %>
 <%= content_for :title, "#{@content_item.title} - Digital Service Manual" %>
 
 <% content_for :phase_message do %>
@@ -17,41 +17,36 @@
         <%= @content_item.description %>
       </p>
     </div>
-  </div>
-</div>
-
-<div class="grid-row">
-  <div class="column-two-thirds">
-      <div<% if @content_item.visually_collapsed? %> class="js-hidden" data-module="accordion-with-descriptions"<% end %>>
-        <div class="subsection-wrapper">
-          <% @content_item.groups.each_with_index do |link_group, idx| %>
-            <div class="subsection">
-            <% if link_group.name.present? %>
-              <div class="subsection__header">
-                <h2 class="subsection__title"><%= link_group.name %></h2>
-              <% if link_group.description.present? %>
-                <p class="subsection__description"><%= link_group.description %></p>
-              <% end %>
-              </div>
+    <div<% if @content_item.visually_collapsed? %> class="js-hidden" data-module="accordion-with-descriptions"<% end %>>
+      <div class="subsection-wrapper">
+        <% @content_item.groups.each_with_index do |link_group, idx| %>
+          <div class="subsection">
+          <% if link_group.name.present? %>
+            <div class="subsection__header">
+              <h2 class="subsection__title"><%= link_group.name %></h2>
+            <% if link_group.description.present? %>
+              <p class="subsection__description"><%= link_group.description %></p>
             <% end %>
-              <div class="subsection__content" id="subsection_content_<%= idx %>">
-                <ul class="subsection__list">
-                  <% link_group.linked_items.each do |linked_item| %>
-                    <li class="subsection__list-item">
-                      <%= link_to linked_item.label, linked_item.href %>
-                    </li>
-                  <% end %>
-                </ul>
-              </div>
             </div>
           <% end %>
-        </div>
+            <div class="subsection__content" id="subsection_content_<%= idx %>">
+              <ul class="subsection__list">
+                <% link_group.linked_items.each do |linked_item| %>
+                  <li class="subsection__list-item">
+                    <%= link_to linked_item.label, linked_item.href %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        <% end %>
       </div>
+    </div>
   </div>
 
-  <div class="column-third">
+  <div class="column-one-third">
     <% if @content_item.content_owners.any? %>
-      <aside class="related">
+      <aside class="related related--top-border">
         <h2 class="related__title" id="related-communities">
           <%= service_manual_topic_related_communities_title(@content_item.content_owners) -%>
         </h2>

@@ -1,4 +1,4 @@
-<%= content_for :page_class, "service-manual" %>
+<%= content_for :page_class, "u-margin-bottom-large" %>
 <%= content_for :title, "#{@content_item.title} - Digital Service Manual" %>
 
 <% content_for :phase_message do %>
@@ -26,8 +26,8 @@
 
   <div class="column-third">
 
-    <div class="community-contact">
-      <p>
+    <div class="u-margin-top">
+      <p class="u-align-right">
         <%= link_to "Give feedback about this page", "/contact/govuk", class: "feedback" %>
       </p>
     </div>
@@ -35,7 +35,7 @@
 </div>
 
 <!-- Metadata-->
-<div class="grid-row">
+<div class="grid-row u-margin-bottom">
   <div class="column-two-thirds">
 
     <div class="metadata">
@@ -74,7 +74,7 @@
   </div>
   <div class="column-two-thirds">
 
-    <div class="govspeak-wrapper">
+    <div class="u-margin-bottom">
       <%= render 'govuk_component/govspeak', content: @content_item.body.html_safe %>
     </div>
 

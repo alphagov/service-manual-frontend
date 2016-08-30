@@ -1,9 +1,14 @@
 .related {
+
+  margin-top: $gutter;
+
   @include media(tablet) {
-    border-top: 1px solid $border-colour;
+    margin-top: $gutter * 5;
+    margin-left: $gutter-half;
   }
 
-  padding-top: 1em;
+  padding-top: $gutter-half;
+
 
   &__title {
     @include bold-19;
@@ -22,4 +27,10 @@
   &__list-item {
     margin-bottom: 0.5em;
   }
+
+
+  &--top-border {
+    border-top: 1px solid $border-colour;
+  }
+
 }

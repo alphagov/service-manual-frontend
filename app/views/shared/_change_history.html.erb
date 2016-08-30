@@ -1,5 +1,6 @@
 <% time = change.public_timestamp %>
-<time datetime="<%= time.iso8601 %>" class="timestamp"><%= l time, format: :short_ordinal %></time>
+<time datetime="<%= time.iso8601 %>" class="change-history__date"><%= l time, format: :short_ordinal %></time>
+
 <p class="change-history__summary">
   <%= change.note %>
 </p>
