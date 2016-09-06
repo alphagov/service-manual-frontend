@@ -19,4 +19,11 @@ class HomepageTest < ActionDispatch::IntegrationTest
 
     assert page.has_link? 'service manual team', href: '/contact/govuk'
   end
+
+  test 'the homepage includes the titles and descriptions of associated topics' do
+    setup_and_visit_example('service_manual_homepage', 'service_manual_homepage')
+
+    assert page.has_content? "Agile delivery How to work in an agile way: principles, tools and governance."
+    assert page.has_link? 'Agile delivery', href: '/service-manual/agile-delivery'
+  end
 end

@@ -26,3 +26,16 @@
     </div>
   </div>
 </header>
+
+<% @content_item.topics.each_slice(3) do |row_of_topics| %>
+  <div class="grid-row">
+  <% row_of_topics.each do |topic| %>
+    <div class="column-one-third">
+      <div class="link-unit">
+        <h2 class="link-unit__title"><%= link_to topic["title"], topic["base_path"] %></h2>
+        <p class="link-unit__description"><%= topic["description"] %></p>
+      </div>
+    </div>
+  <% end %>
+  </div>
+<% end %>

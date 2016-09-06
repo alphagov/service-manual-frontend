@@ -16,10 +16,6 @@ private
     @_points_attributes ||= links["children"] || []
   end
 
-  def links
-    @_links ||= content_item["links"] || {}
-  end
-
   class Point
     include Comparable
 
