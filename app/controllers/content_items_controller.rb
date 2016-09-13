@@ -78,8 +78,6 @@ private
     set_slimmer_headers(remove_search: true)
   end
 
-private
-
   def error_403(exception)
     render text: exception.message, status: 403
   end
