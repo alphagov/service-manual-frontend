@@ -6,26 +6,13 @@ class ContentItemsController < ApplicationController
   rescue_from GdsApi::HTTPForbidden, with: :error_403
 
   def show
-    # The Slimmer middleware is responsible for intercepting the response and inserting the navigation header into the HTML body. We need to set the request headers here for the search form in the header to have the correct hidden input to scope the search results to just the service manual.
-
-    # It should look something like:
-
-    # <form id="search" class="site-search" action="/search" method="get" role="search">
-    #   <input type="search" name="q" id="site-search-text" title="Search" class="js-search-focus">
-    #   <input class="submit" type="submit" value="Search">
-    #   <input type="hidden" name="filter_manual" value="/service-manual">
-    # </form>
-    set_slimmer_headers(
-      search_parameters: {
-        "filter_manual" => "/service-manual"
-      }.to_json,
-    )
-
     if load_content_item
       set_expiry
       set_locale
+      configure_header_search
       render content_item_template
     else
+      configure_header_search
       render text: 'Not found', status: :not_found
     end
   end
@@ -65,6 +52,30 @@ private
 
   def content_store
     @content_store ||= GdsApi::ContentStore.new(Plek.current.find("content-store"))
+  end
+
+  def configure_header_search
+    if @content_item.present? && @content_item.is_homepage?
+      remove_header_search
+    else
+      scope_header_search_to_service_manual
+    end
+  end
+
+  def scope_header_search_to_service_manual
+    # Slimmer is middleware which wraps the service manual in the GOV.UK header
+    # and footer. We set a response header so that Slimmer adds a hidden field
+    # to the header search to scope the search results to just the service
+    # manual.
+    set_slimmer_headers(
+      search_parameters: {
+        "filter_manual" => "/service-manual"
+      }.to_json,
+    )
+  end
+
+  def remove_header_search
+    set_slimmer_headers(remove_search: true)
   end
 
 private

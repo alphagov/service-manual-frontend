@@ -85,6 +85,13 @@ class ContentItemsControllerTest < ActionController::TestCase
     )
   end
 
+  test 'the homepage should tell slimmer not to include a search box in the header' do
+    content_item = content_store_has_schema_example('service_manual_homepage', 'service_manual_homepage')
+
+    get :show, path: path_for(content_item)
+    assert_equal 'true', @response.headers[Slimmer::Headers::REMOVE_SEARCH_HEADER]
+  end
+
   def path_for(content_item)
     content_item['base_path'].sub(/^\//, '')
   end

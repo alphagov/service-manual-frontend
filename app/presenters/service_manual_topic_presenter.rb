@@ -38,6 +38,10 @@ class ServiceManualTopicPresenter
     @visually_collapsed
   end
 
+  def is_homepage?
+    false
+  end
+
 private
 
   def topic_breadcrumb
