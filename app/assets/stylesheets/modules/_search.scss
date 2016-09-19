@@ -1,10 +1,6 @@
 .search {
   @extend %contain-floats;
 
-  &__label {
-    color: $white;
-  }
-
   &__input {
     float: left;
     width: 100%;
@@ -20,28 +16,29 @@
 
   &__submit {
     float: left;
+    padding: 6px;
     background: $black;
     color: $white;
     border: 0;
-    padding: 6px;
   }
 
-  // IE6 + IE7 always get the simpler version, regardless of whether javascript
+  // IE6 + IE7 always get the simplest version, regardless of whether javascript
   // is enabled
   @if ($is-ie == false) or ($ie-version >= 8) {
+    $search-button-size: 40px;
+
     &__input {
       @include box-sizing(border-box);
 
-      padding-right: 40px;
-      margin-right: -40px;
+      padding-right: $search-button-size;
+      margin-right: -$search-button-size;
 
       input {
         @include box-sizing(border-box);
         @include appearance(none);
 
         position: relative;
-        height: 40px;
-        padding: 6px;
+        height: $search-button-size;
         margin: 0;
 
         border: 0;
@@ -51,11 +48,9 @@
 
     &__submit {
       @include box-sizing(border-box);
-      float: left;
-      height: 40px;
-      width: 40px;
+      height: $search-button-size;
+      width: $search-button-size;
 
-      border: none;
       cursor: pointer;
 
       overflow: hidden;
@@ -72,7 +67,7 @@
       }
 
       &:focus {
-        z-index: 10;
+        z-index: 15;
         position: relative;
       }
 
@@ -88,9 +83,7 @@
       // Absolutely position the label behind the input
       &__label {
         @include core-19($line-height: 40px, $line-height-640: 40px);
-        display: block;
         position: absolute;
-        width: 100%;
         left: 0;
         top: 1px;
         z-index: 5;
@@ -105,25 +98,20 @@
         position: relative;
         z-index: 10;
 
-        // Internet Explorer does not play well with "empty" elements.
-        // Providing a background image somehow makes them work. ¯\_(ツ)_/¯
+        // Internet Explorer does not play well with "empty" elements. The label
+        // behind the text box becomes selectable (i.e. it acts as if the input
+        // is not there.) Setting a background image fixes it.
+        // http://stackoverflow.com/questions/2098714/input-boxes-with-transparent-background-are-not-clickable-in-ie8
+        // http://stackoverflow.com/questions/9109911/ie-z-index-trouble-on-element-with-transparent-background
         background: transparent url('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
 
-        // Javascript gives input a confusingly named `focus` class when it is
-        // not empty, and setting the background to white hides the label.
+        // Javascript adds a confusingly named `focus` class to the input when
+        // it contains text. We use this to set the background to white, hiding
+        // the label.
         &:focus,
         &.focus {
           background: $white;
         }
-
-        &:focus {
-          z-index: 20;
-        }
-      }
-
-      &__submit {
-        position: relative;
-        z-index: 15;
       }
     }
   }
