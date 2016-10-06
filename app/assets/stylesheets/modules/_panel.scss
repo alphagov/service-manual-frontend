@@ -1,0 +1,19 @@
+.panel {
+  margin-top: $gutter-half;
+  padding-top: $gutter-half;
+
+  border-top: 1px solid $grey-2;
+
+  @include media(desktop) {
+    margin-top: $gutter;
+  }
+
+  &__title {
+    @include bold-24;
+    margin-bottom: $gutter-half;
+  }
+
+  &__description {
+    @include core-19;
+  }
+}
