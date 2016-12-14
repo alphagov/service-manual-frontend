@@ -1,14 +1,8 @@
-class ServiceManualTopicPresenter
+class ServiceManualTopicPresenter < ContentItemPresenter
   ContentOwner = Struct.new(:title, :href)
-  attr_reader :content_item, :title, :format, :description, :locale
 
   def initialize(content_item)
-    @content_item = content_item
-
-    @title = content_item["title"]
-    @description = content_item["description"]
-    @format = content_item["format"]
-    @locale = content_item["locale"]
+    super
     @visually_collapsed = content_item["details"]["visually_collapsed"]
   end
 

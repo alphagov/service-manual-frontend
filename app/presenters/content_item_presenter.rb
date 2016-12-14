@@ -14,6 +14,10 @@ class ContentItemPresenter
     sorted_locales(@content_item["links"]["available_translations"])
   end
 
+  def is_homepage?
+    false
+  end
+
 private
 
   def display_time(timestamp)
