@@ -1,0 +1,43 @@
+.hero {
+  background-color: $govuk-blue;
+  color: $white;
+  padding: $gutter-half;
+
+  @include media(tablet) {
+    padding: $gutter $gutter ($gutter * 1.5);
+  }
+
+  margin-bottom: $gutter;
+
+  &__title {
+    @include core-48;
+    margin-bottom: $gutter-half;
+    font-weight: bold;
+  }
+
+  &__description {
+    @include core-19;
+  }
+
+  &__feedback-link {
+    @include core-16;
+    line-height: 1.25;
+    margin-top: $gutter;
+
+    @include media(tablet) {
+      margin-top: 0;
+    }
+  }
+
+  a:link,
+  a:visited {
+    font-weight: bold;
+    color: $white;
+    text-decoration: none;
+  }
+
+  a:active,
+  a:hover {
+    text-decoration: underline;
+  }
+}
