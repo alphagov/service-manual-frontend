@@ -20,31 +20,21 @@
 
 <div class="grid-row">
   <div class="column-two-thirds">
-      <div<% if @content_item.visually_collapsed? %> class="js-hidden" data-module="accordion-with-descriptions"<% end %>>
-        <div class="subsection-wrapper">
-          <% @content_item.groups.each_with_index do |link_group, idx| %>
-            <div class="subsection js-subsection">
-            <% if link_group.name.present? %>
-              <div class="subsection__header">
-                <h2 class="subsection__title" id="<%= link_group.name.parameterize %>"><%= link_group.name %></h2>
-              <% if link_group.description.present? %>
-                <p class="subsection__description"><%= link_group.description %></p>
-              <% end %>
-              </div>
-            <% end %>
-              <div class="subsection__content js-subsection-content" id="subsection_content_<%= idx %>">
-                <ul class="subsection__list">
-                  <% link_group.linked_items.each do |linked_item| %>
-                    <li class="subsection__list-item">
-                      <%= link_to linked_item.label, linked_item.href %>
-                    </li>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
+      <%= render(
+        layout: 'govuk_component/accordion_with_descriptions',
+        locals: {
+          sections: @content_item.groups,
+          js_disabled: !@content_item.visually_collapsed?,
+        }
+      ) do |section| %>
+        <ul class="subsection__list">
+          <% section.linked_items.each do |linked_item| %>
+            <li class="subsection__list-item">
+              <%= link_to linked_item.label, linked_item.href %>
+            </li>
           <% end %>
-        </div>
-      </div>
+        </ul>
+      <% end %>
   </div>
 
   <div class="column-third">
