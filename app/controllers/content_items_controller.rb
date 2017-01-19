@@ -4,6 +4,7 @@ require 'slimmer/headers'
 class ContentItemsController < ApplicationController
   include Slimmer::Headers
   include Slimmer::Template
+
   rescue_from GdsApi::HTTPForbidden, with: :error_403
 
   def show
