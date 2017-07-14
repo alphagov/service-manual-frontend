@@ -10,4 +10,8 @@ module ApplicationHelper
   def contact_govuk_path
     "/contact/govuk"
   end
+
+  def digital_guidance_path
+    "/topic/government-digital-guidance/content-publishing"
+  end
 end
