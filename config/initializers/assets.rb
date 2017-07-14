@@ -14,4 +14,5 @@ Rails.application.config.assets.precompile += %w(
   screen-ie7.css
   screen-ie8.css
   print.css
+  designprinciples.js
 )
