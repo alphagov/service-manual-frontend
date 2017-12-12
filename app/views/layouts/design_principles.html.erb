@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= yield :title %></title>
+    <!--[if gt IE 8]><!--><%= stylesheet_link_tag "screen.css" %><!--<![endif]-->
+    <!--[if IE 6]><%= stylesheet_link_tag "screen-ie6.css" %><![endif]-->
+    <!--[if IE 7]><%= stylesheet_link_tag "screen-ie7.css" %><![endif]-->
+    <!--[if IE 8]><%= stylesheet_link_tag "screen-ie8.css" %><![endif]-->
+
+    <%= javascript_include_tag 'designprinciples.js' %>
+    <%= yield :extra_javascript %>
+
+    <%= yield :extra_headers %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>
