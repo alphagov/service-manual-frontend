@@ -11,7 +11,7 @@ gem 'rails', '~> 5.0.0'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'rails_translation_manager', '~> 0.0.2'
 gem 'sass-rails', '~> 5.0.6'
-gem 'slimmer', '~> 11.1.1'
+gem 'slimmer', '~> 12.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'unicorn', '4.8'
 
