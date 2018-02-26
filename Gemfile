@@ -18,7 +18,7 @@ gem 'unicorn', '4.8'
 if ENV['API_DEV']
   gem 'gds-api-adapters', path: '../gds-api-adapters'
 else
-  gem 'gds-api-adapters', '~> 47.9.1'
+  gem 'gds-api-adapters', '~> 51.3.0'
 end
 
 group :development, :test do
