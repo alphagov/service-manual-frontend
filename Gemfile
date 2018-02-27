@@ -24,7 +24,7 @@ end
 group :development, :test do
   gem "jasmine-rails"
   gem 'govuk-lint'
-  gem 'phantomjs', '~> 1.9.7'
+  gem 'phantomjs', '~> 2.1.1'
   gem 'wraith', '~> 4.0'
 end
 
