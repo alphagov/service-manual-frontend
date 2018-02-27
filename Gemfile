@@ -4,7 +4,7 @@ ruby File.read(".ruby-version").strip
 
 gem "govuk_app_config", "~> 0.2.0"
 gem 'govuk_elements_rails'
-gem 'govuk_frontend_toolkit', '~> 6.0.0'
+gem 'govuk_frontend_toolkit', '~> 7.4.2'
 gem 'logstasher', '0.6.1'
 gem 'plek', '2.1.1'
 gem 'rails', '~> 5.0.0'
