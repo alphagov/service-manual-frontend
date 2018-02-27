@@ -13,7 +13,7 @@ gem 'rails_translation_manager', '~> 0.0.2'
 gem 'sass-rails', '~> 5.0.6'
 gem 'slimmer', '~> 11.1.1'
 gem 'uglifier', '>= 1.3.0'
-gem 'unicorn', '4.8'
+gem 'unicorn', '5.4.0'
 
 if ENV['API_DEV']
   gem 'gds-api-adapters', path: '../gds-api-adapters'
