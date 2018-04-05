@@ -370,7 +370,7 @@ DEPENDENCIES
   plek (= 2.1.1)
   poltergeist
   pry-byebug
-  rails (~> 5.1.5)
+  rails (~> 5.1.6)
   rails-controller-testing
   rails-i18n (~> 5.1.1)
   rails_translation_manager (~> 0.0.2)
