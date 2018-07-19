@@ -127,7 +127,7 @@ GEM
     govuk_frontend_toolkit (7.6.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
-    govuk_publishing_components (9.5.2)
+    govuk_publishing_components (9.5.3)
       govspeak (>= 5.0.3)
       govuk_app_config
       govuk_frontend_toolkit
@@ -282,7 +282,7 @@ GEM
       crass (~> 1.0.2)
       nokogiri (>= 1.4.4)
       nokogumbo (~> 1.4)
-    sass (3.5.6)
+    sass (3.5.7)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -370,7 +370,7 @@ DEPENDENCIES
   govuk_app_config (~> 1.7)
   govuk_elements_rails
   govuk_frontend_toolkit (~> 7.6.0)
-  govuk_publishing_components (~> 9.5.2)
+  govuk_publishing_components (~> 9.5.3)
   jasmine-rails
   listen (>= 3.0.5, < 3.2)
   phantomjs (~> 2.1.1)
