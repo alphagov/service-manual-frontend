@@ -19,7 +19,7 @@ group :development, :test do
   gem 'govuk-lint'
   gem 'jasmine-rails'
   gem 'phantomjs', '~> 2.1.1'
-  gem 'wraith', '~> 4.0'
+  gem 'wraith', '~> 4.2'
 end
 
 group :development do
