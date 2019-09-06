@@ -6,61 +6,63 @@
   content_for :body_classes, 'full-width'
 %>
 
-<header class="hero">
-  <div class="hero__content">
-    <div class="grid-row">
-      <div class="column-two-thirds">
-        <h1 class="hero__title">Service Manual</h1>
-
-        <p class="hero__description">
-          Helping teams to create and run great public services that meet the <%= link_to 'Service Standard', '/service-manual/service-standard' %>.
-        </p>
-
-        <div class="hero__search search">
+<header class="app-c-hero">
+  <div class="app-c-hero__content govuk-width-container">
+    <div class="govuk-main-wrapper govuk-!-padding-top-7">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-8 app-c-heading--inverse">Service Manual</h1>
+          <p class="govuk-body-lead app-c-hero-lead app-c-body--inverse govuk-!-padding-bottom-1">
+            Helping teams to create and run great public services that meet the <%= link_to 'Service Standard', '/service-manual/service-standard', class: 'govuk-link' %>.
+          </p>
           <form action="/search" method="get" role="search">
-            <label for="search" class="search__label">Search the Service Manual</label>
-            <div class="search__input">
-              <input class="js-search-focus" name="q" id="search" type="search" title="Search the service manual" />
-            </div>
             <input type="hidden" name="filter_manual" value="/service-manual">
-            <input class="search__submit" type="submit" value="Search">
+            <%= render "govuk_publishing_components/components/search", {
+              id: "search",
+              label_text: "Search the service manual",
+              name: "q",
+              on_govuk_blue: true,
+              type: "search"
+            } %>
           </form>
         </div>
-      </div>
-
-      <div class="column-one-third">
-        <p class="hero__feedback-link"><%= link_to 'Contact the Service Manual team', '/contact/govuk' %> with any comments or questions.</p>
+        <div class="govuk-grid-column-one-third">
+          <p class="govuk-body-s app-c-body--inverse">
+            <%= link_to 'Contact the Service Manual team', '/contact/govuk', class: 'govuk-link' %>
+            with any comments or questions.
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </header>
 
-<div class="full-page-width-wrapper">
-  <% @content_item.topics.each_slice(3) do |row_of_topics| %>
-    <div class="grid-row">
-      <% row_of_topics.each do |topic| %>
-        <div class="column-one-third">
-          <div class="link-unit">
-            <h2 class="link-unit__title"><%= link_to topic["title"], topic["base_path"] %></h2>
-            <p class="link-unit__description"><%= topic["description"] %></p>
+<div class="govuk-width-container">
+  <div class="govuk-main-wrapper">
+    <% @content_item.topics.each_slice(3) do |row_of_topics| %>
+      <div class="govuk-grid-row">
+        <% row_of_topics.each do |topic| %>
+          <div class="govuk-grid-column-one-third">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1"><%= link_to topic["title"], topic["base_path"], class: 'govuk-link' %></h2>
+            <p class="govuk-body-s"><%= topic["description"] %></p>
           </div>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-
-  <div class="grid-row">
-    <div class="column-half">
-      <div class="panel">
-        <h2 class="panel__title">The Service Standard</h2>
-        <p class="panel__description">The <%= link_to 'Service Standard', '/service-manual/service-standard' %> provides the principles of building a good service. This manual explains what teams can do to build great services that will meet the standard.</p>
+        <% end %>
       </div>
-    </div>
+    <% end %>
 
-    <div class="column-half">
-      <div class="panel">
-        <h2 class="panel__title">Communities of practice</h2>
-        <p class="panel__description">You can view the <%= link_to 'communities of practice', '/service-manual/communities' %> to find more learning resources, see who has written the guidance in the manual and connect with digital people like you from across government.</p>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <div class="panel govuk-!-padding-top-3 govuk-!-margin-top-5">
+          <h2 class="govuk-heading-m">The Service Standard</h2>
+          <p class="govuk-body app-c-body">The <%= link_to 'Service Standard', '/service-manual/service-standard', class: 'govuk-link' %> provides the principles of building a good service. This manual explains what teams can do to build great services that will meet the standard.</p>
+        </div>
+      </div>
+
+      <div class="govuk-grid-column-one-half">
+        <div class="panel govuk-!-padding-top-3 govuk-!-margin-top-5">
+          <h2 class="govuk-heading-m">Communities of practice</h2>
+          <p class="govuk-body app-c-body">You can view the <%= link_to 'communities of practice', '/service-manual/communities', class: 'govuk-link' %> to find more learning resources, see who has written the guidance in the manual and connect with digital people like you from across government.</p>
+        </div>
       </div>
     </div>
   </div>
