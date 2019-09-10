@@ -3,17 +3,17 @@
   content_for :phase_message do
     render 'shared/custom_phase_message_homepage', phase: @content_item.phase
   end
-  content_for :body_classes, 'full-width'
+  content_for :body_classes, 'app-full-width'
 %>
 
 <header class="app-c-hero">
   <div class="app-c-hero__content govuk-width-container">
-    <div class="govuk-main-wrapper govuk-!-padding-top-7">
+    <div class="govuk-main-wrapper">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <h1 class="govuk-heading-xl govuk-!-margin-bottom-8 app-c-heading--inverse">Service Manual</h1>
-          <p class="govuk-body-lead app-c-hero-lead app-c-body--inverse govuk-!-padding-bottom-1">
-            Helping teams to create and run great public services that meet the <%= link_to 'Service Standard', '/service-manual/service-standard', class: 'govuk-link' %>.
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-6 app-c-hero__heading--inverse">Service Manual</h1>
+          <p class="govuk-body-lead app-c-hero-lead app-c-hero__body--inverse govuk-!-padding-bottom-1">
+            Helping teams to create and run great public services that meet the <%= link_to 'Service Standard', '/service-manual/service-standard', class: 'govuk-link app-link--inverse' %>.
           </p>
           <form action="/search" method="get" role="search">
             <input type="hidden" name="filter_manual" value="/service-manual">
@@ -27,8 +27,8 @@
           </form>
         </div>
         <div class="govuk-grid-column-one-third">
-          <p class="govuk-body-s app-c-body--inverse">
-            <%= link_to 'Contact the Service Manual team', '/contact/govuk', class: 'govuk-link' %>
+          <p class="govuk-body-s app-c-hero__body--inverse">
+            <%= link_to 'Contact the Service Manual team', '/contact/govuk', class: 'govuk-link app-link--inverse' %>
             with any comments or questions.
           </p>
         </div>

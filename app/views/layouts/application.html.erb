@@ -2,16 +2,12 @@
 <html>
 <head>
   <title><%= yield :title %> - GOV.UK</title>
-  <!--[if gt IE 8]><!--><%= stylesheet_link_tag "application" %><!--<![endif]-->
-  <!--[if IE 6]><%= stylesheet_link_tag "application-ie6" %><script>var ieVersion = 6;</script><![endif]-->
-  <!--[if IE 7]><%= stylesheet_link_tag "application-ie7" %><script>var ieVersion = 7;</script><![endif]-->
-  <!--[if IE 8]><%= stylesheet_link_tag "application-ie8" %><script>var ieVersion = 8;</script><![endif]-->
-  <%= stylesheet_link_tag "print", media: "print" %>
+  <%= stylesheet_link_tag "application" %>
 
-  <%= javascript_include_tag 'application' %>
-  <%= javascript_include_tag 'start-modules' if Rails.env.test? %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "start-modules" if Rails.env.test? %>
   <%= csrf_meta_tags %>
-  <%= render 'govuk_publishing_components/components/meta_tags', content_item: @content_item.content_item %>
+  <%= render "govuk_publishing_components/components/meta_tags", content_item: @content_item.content_item %>
   <%= yield(:extra_head) %>
   <% if content_for(:meta_description).present? %>
     <meta name="description" content="<%= content_for(:meta_description) %>" />
@@ -22,19 +18,29 @@
       <span class="header-title"><%= content_for(:header_title) || "Service Manual" %></span>
   </div>
 
-  <div id="wrapper" class="<%= wrapper_class %>">
+  <div id="wrapper" class="app-!-full-width-override <%= wrapper_class %>">
     <main role="main" id="content" lang="<%= I18n.locale %>">
-      <div class="full-page-width-wrapper">
-        <%= render_phase_label @content_item, content_for(:phase_message) %>
+      <div class="govuk-width-container">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <%= render_phase_label @content_item, content_for(:phase_message) %>
+          </div>
+        </div>
       </div>
       <%= yield %>
     </main>
 
-    <% if @content_item.use_new_style_feedback_form? %>
-      <%= render '/shared/improve_this_page' %>
-    <% else %>
-      <%= render 'govuk_publishing_components/components/feedback' %>
-    <% end %>
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <% if @content_item.use_new_style_feedback_form? %>
+            <%= render "/shared/improve_this_page" %>
+          <% else %>
+            <%= render "govuk_publishing_components/components/feedback" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 </html>

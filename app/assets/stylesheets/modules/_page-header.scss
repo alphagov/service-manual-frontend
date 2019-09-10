@@ -1,43 +1,20 @@
-// Example usage:
-
-// <div class="page-header">
-//   <p class="page-header__context">Context</p>
-//   <h1 class="page-header__title">Agile delivery</h1>
-//   <p class="page-header__summary">
-//     How to work in an agile way: principles, tools and governance.
-//   </p>
-//   <p class="page-header__intro">
-//     Additional descriptive text can sit here
-//   </p>
-// </div>
-
-// Here we're using BEM which uses __ to denote an element within a block
-// scss-lint:disable SelectorFormat
-.page-header {
-  @include responsive-vertical-margins;
-
-  &__context {
-    @include core-24;
-
-    color: $secondary-text-colour;
-    margin-bottom: 0;
-    padding-bottom: .167em;
-  }
-
-  &__title {
-    @include bold-48;
-
-    @include responsive-bottom-margin;
-  }
-
-  &__summary {
-    @include core-24;
-
-    @include responsive-bottom-margin;
-  }
-
+.app-c-page-header {
   &__intro {
-    @include core-19;
+    p {
+      @extend %govuk-body-m;
+    }
+
+    a {
+      @extend %govuk-link;
+    }
   }
 
+  &__heading {
+    margin-bottom: govuk-spacing(3);
+
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: govuk-spacing(7) + govuk-spacing(1);
+      margin-top: govuk-spacing(7) + govuk-spacing(1);
+    }
+  }
 }

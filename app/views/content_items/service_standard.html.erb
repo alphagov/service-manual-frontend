@@ -4,68 +4,65 @@
 <% content_for :phase_message do %>
   <%= render 'shared/custom_phase_message', phase: @content_item.phase %>
 <% end %>
+<div class="govuk-width-container">
+  <%= render "govuk_publishing_components/components/breadcrumbs", breadcrumbs: @content_item.breadcrumbs %>
 
-<%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: @content_item.breadcrumbs %>
-
-<!-- Page title and contact -->
-<div class="grid-row">
-
-  <div class="column-two-thirds">
-    <div class="page-header">
-      <h1 class="page-header__title"><%= @content_item.title %></h1>
-      <p class="page-header__summary">
-        <%= @content_item.content_item["description"] %>
-      </p>
-      <div class="page-header__intro">
-        <%= @content_item.content_item["details"]["body"].html_safe %>
+  <!-- Page title and contact -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="app-c-page-header govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+        <h1 class="govuk-heading-xl app-c-page-header__heading"><%= @content_item.title %></h1>
+        <p class="govuk-body-l govuk-!-margin-bottom-7">
+          <%= @content_item.content_item["description"] %>
+        </p>
+        <div class="app-c-page-header__intro govuk-!-padding-bottom-3">
+          <%= @content_item.content_item["details"]["body"].html_safe %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Points -->
-<div class="grid-row">
-
-  <div class="column-two-thirds">
-    <% @content_item.points.each do |point| %>
-
-      <div class="service-standard-point" id="criterion-<%= point.number -%>">
-        <h2 class="service-standard-point__title">
-          <span class="service-standard-point__number"><%= point.number %>.</span>
-          <%= point.title_without_number %>
-        </h2>
-
-        <div class="service-standard-point__details">
-          <p><%= point.description %></p>
-          <p class="service-standard-point__link"><%= link_to "Read more about point #{ point.number }", point.base_path %></p>
+  <!-- Points -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <% @content_item.points.each do |point| %>
+        <div class="app-c-service-standard-point" id="criterion-<%= point.number -%>">
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-3 app-c-service-standard-point__title">
+            <span class="app-c-service-standard-point__number"><%= point.number %>.</span>
+            <%= point.title_without_number %>
+          </h2>
+          <div class="app-c-service-standard-point__details">
+            <%= "<p class='govuk-body'>#{point.description}</p>" if point.description.present? %>
+            <p class="govuk-body app-c-service-standard-point__link"><%= link_to "Read more about point #{ point.number }", point.base_path, class: 'govuk-link' %></p>
+          </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 
-  <div class="column-third">
-    <aside class="related">
-    <% if @content_item.email_alert_signup_link.present? %>
-      <div class="related-item">
-        <h2 class="related-item__title" id="related-subscriptions">
-          Get notifications
-        </h2>
-        <p class="related-item__description">When any points in the Service Standard are updated
-          <%= link_to "email", @content_item.email_alert_signup_link, class: 'related-item__email-link' %>
-        </p>
-      </div>
-    <% end %>
+    <div class="govuk-grid-column-one-third">
+      <aside class="related">
+      <% if @content_item.email_alert_signup_link.present? %>
+        <div class="related-item">
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-2" id="related-subscriptions">
+            Get notifications
+          </h2>
+          <p class="govuk-body">When any points in the Service Standard are updated
+            <%= link_to "email", @content_item.email_alert_signup_link, class: 'govuk-link related-item__email-link' %>
+          </p>
+        </div>
+      <% end %>
 
-    <% if @content_item.poster_url.present? %>
-      <div class="related-item">
-        <h2 class="related-item__title" id="download-poster">
-          Download the poster
-        </h2>
-        <p class="related-item__description">
-          <%= link_to "Download and print your own Service Standard poster", @content_item.poster_url %>
-        </p>
-      </div>
-    <% end %>
-    </aside>
+      <% if @content_item.poster_url.present? %>
+        <div class="related-item">
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-2" id="download-poster">
+            Download the poster
+          </h2>
+          <p class="govuk-body">
+            <%= link_to "Download and print your own Service Standard poster", '/jam', class: 'govuk-link' %>
+          </p>
+        </div>
+      <% end %>
+      </aside>
+    </div>
   </div>
 </div>

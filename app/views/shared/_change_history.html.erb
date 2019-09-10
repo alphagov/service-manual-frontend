@@ -1,5 +1,7 @@
 <% time = change.public_timestamp %>
-<time datetime="<%= time.iso8601 %>" class="timestamp"><%= l time, format: :short_ordinal %></time>
-<p class="change-history__summary">
+<time datetime="<%= time.iso8601 %>" class="govuk-heading-m govuk-!-margin-bottom-1">
+  <%= l time, format: :short_ordinal %>
+</time>
+<p class="govuk-body-s app-c-change-history__change-note">
   <%= change.note %>
 </p>

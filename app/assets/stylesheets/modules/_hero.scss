@@ -11,8 +11,7 @@
 
   a:link,
   a:visited {
-    color: govuk-colour("white");
-    font-weight: bold;
+    @include govuk-typography-weight-bold;
   }
 }
 
@@ -20,7 +19,7 @@
   line-height: 1.35;
 }
 
-.app-c-heading--inverse,
-.app-c-body--inverse {
+.app-c-hero__heading--inverse,
+.app-c-hero__body--inverse {
   color: govuk-colour("white");
 }

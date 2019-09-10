@@ -1,23 +1,11 @@
-.full-width {
-  // We're overriding static, we have to use IDs.
-  // scss-lint:disable IdSelector
-  #wrapper {
-    margin: 0;
-    width: auto;
-    max-width: 100%;
-  }
-
+.app-full-width {
   #global-header-bar {
+    // scss-lint:disable IdSelector
     display: none;
   }
+}
 
-  .govuk-beta-label {
-    border-bottom: none;
-  }
-
-  .full-page-width-wrapper,
-  #wrapper .report-a-problem-toggle-wrapper,
-  #wrapper .report-a-problem-container {
-    @extend %site-width-container;
-  }
+.app-\!-full-width-override {
+  margin: auto !important;
+  max-width: none !important;
 }
