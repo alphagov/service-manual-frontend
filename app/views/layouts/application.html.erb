@@ -33,11 +33,7 @@
     <div class="govuk-width-container">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-          <% if @content_item.use_new_style_feedback_form? %>
-            <%= render "/shared/improve_this_page" %>
-          <% else %>
-            <%= render "govuk_publishing_components/components/feedback" %>
-          <% end %>
+          <%= render "govuk_publishing_components/components/feedback" %>
         </div>
       </div>
     </div>

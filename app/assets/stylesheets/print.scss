@@ -4,9 +4,4 @@ $is-print: true;
 
 @import "common";
 
-// Modules
-// We're including a subset of all the modules listed in `application.scss` here
-// as not all of them have proper print styling set up.
-@import "modules/improve-this-page";
-
 @import "govuk_publishing_components/all_components_print";

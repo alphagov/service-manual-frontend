@@ -1,6 +1,5 @@
 .app-full-width {
-  #global-header-bar {
-    // scss-lint:disable IdSelector
+  #global-header-bar { // scss-lint:disable IdSelector
     display: none;
   }
 }
