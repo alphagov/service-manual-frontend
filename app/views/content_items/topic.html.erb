@@ -4,82 +4,84 @@
 <% content_for :phase_message do %>
   <%= render 'shared/custom_phase_message', phase: @content_item.phase %>
 <% end %>
+<div class="govuk-width-container">
 
-<%= render "govuk_publishing_components/components/breadcrumbs", breadcrumbs: @content_item.breadcrumbs %>
+  <%= render "govuk_publishing_components/components/breadcrumbs", breadcrumbs: @content_item.breadcrumbs %>
 
-<div class="grid-row">
-  <div class="column-two-thirds">
-    <div class="page-header">
-      <h1 class="page-header__title"><%= @content_item.title %></h1>
-      <p class="page-header__summary">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <%= render "govuk_publishing_components/components/title", {
+        title: @content_item.title,
+        margin_bottom: 7
+      } %>
+      <p class="govuk-body-l">
         <%= @content_item.description %>
       </p>
     </div>
   </div>
-</div>
 
-<div class="grid-row">
-  <div class="column-two-thirds">
-      <div<% if @content_item.visually_collapsed? %> class="js-hidden" data-module="accordion-with-descriptions"<% end %>>
-        <div class="subsection-wrapper">
-          <% @content_item.groups.each_with_index do |link_group, idx| %>
-            <div class="subsection js-subsection">
-            <% if link_group.name.present? %>
-              <div class="subsection__header">
-                <h2 class="subsection__title" id="<%= link_group.name.parameterize %>"><%= link_group.name %></h2>
-              <% if link_group.description.present? %>
-                <p class="subsection__description"><%= link_group.description %></p>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <div<% if @content_item.visually_collapsed? %> class="js-hidden" data-module="accordion-with-descriptions"<% end %>>
+          <div class="subsection-wrapper">
+            <% @content_item.groups.each_with_index do |link_group, idx| %>
+              <div class="subsection govuk-!-padding-bottom-5 js-subsection">
+              <% if link_group.name.present? %>
+                <div class="subsection__header">
+                  <h2 class="govuk-heading-m govuk-!-margin-bottom-1 subsection__title" id="<%= link_group.name.parameterize %>"><%= link_group.name %></h2>
+                <% if link_group.description.present? %>
+                  <p class="govuk-body govuk-!-margin-bottom-1 subsection__description"><%= link_group.description %></p>
+                <% end %>
+                </div>
               <% end %>
+                <div class="subsection__content js-subsection-content" id="subsection_content_<%= idx %>">
+                  <ul class="govuk-list subsection__list">
+                    <% link_group.linked_items.each do |linked_item| %>
+                      <li class="subsection__list-item">
+                        <%= link_to linked_item.label, linked_item.href, class: 'govuk-link' %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
               </div>
             <% end %>
-              <div class="subsection__content js-subsection-content" id="subsection_content_<%= idx %>">
-                <ul class="subsection__list">
-                  <% link_group.linked_items.each do |linked_item| %>
-                    <li class="subsection__list-item">
-                      <%= link_to linked_item.label, linked_item.href %>
-                    </li>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-          <% end %>
+          </div>
         </div>
-      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <aside class="related">
+      <% if @content_item.content_owners.any? %>
+        <div class="related-item">
+          <h2 class="related-item__title" id="related-communities">
+            <%= topic_related_communities_title(@content_item.content_owners) -%>
+          </h2>
+          <p class="related-item__description">
+            Find out what the cross-government community does and how to get involved.
+          </p>
+          <nav role="navigation" aria-labelledby="related-communities" class="related-communities">
+            <ul class="related-item__list">
+              <% @content_item.content_owners.each do |content_owner| %>
+                <li class="related-item__list-item">
+                  <%= link_to content_owner.title, content_owner.href %>
+                </li>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
+      <% end %>
+      <% if @content_item.email_alert_signup_link.present? %>
+        <div class="related-item">
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-2" id="related-subscriptions">
+            Get notifications
+          </h2>
+          <p class="govuk-body">When any guidance within this topic is updated
+            <%= link_to "email", @content_item.email_alert_signup_link, class: 'govuk-link related-item__email-link' %>
+          </p>
+        </div>
+      <% end %>
+      </aside>
+    </div>
+
   </div>
-
-  <div class="column-third">
-    <aside class="related">
-    <% if @content_item.content_owners.any? %>
-      <div class="related-item">
-        <h2 class="related-item__title" id="related-communities">
-          <%= topic_related_communities_title(@content_item.content_owners) -%>
-        </h2>
-        <p class="related-item__description">
-          Find out what the cross-government community does and how to get involved.
-        </p>
-        <nav role="navigation" aria-labelledby="related-communities" class="related-communities">
-          <ul class="related-item__list">
-            <% @content_item.content_owners.each do |content_owner| %>
-              <li class="related-item__list-item">
-                <%= link_to content_owner.title, content_owner.href %>
-              </li>
-            <% end %>
-          </ul>
-        </nav>
-      </div>
-    <% end %>
-
-    <% if @content_item.email_alert_signup_link.present? %>
-      <div class="related-item">
-        <h2 class="related-item__title" id="related-subscriptions">
-          Get notifications
-        </h2>
-        <p class="related-item__description">When any guidance within this topic is updated
-          <%= link_to "email", @content_item.email_alert_signup_link, class: 'related-item__email-link' %>
-        </p>
-      </div>
-    <% end %>
-    </aside>
-  </div>
-
 </div>
