@@ -362,7 +362,7 @@ DEPENDENCIES
   govuk_publishing_components (~> 20.3.0)
   jasmine-rails
   listen (>= 3.0.5, < 3.2)
-  phantomjs (~> 2.1.1)
+  phantomjs (~> 2.1, >= 2.1.1.0)
   plek (= 3.0.0)
   poltergeist
   pry-byebug

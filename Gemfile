@@ -18,7 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   gem 'govuk-lint'
   gem 'jasmine-rails'
-  gem 'phantomjs', '~> 2.1.1'
+  gem 'phantomjs', '~> 2.1', '>= 2.1.1.0'
 end
 
 group :development do

@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'pry'
 
 class ServiceStandardTest < ActionDispatch::IntegrationTest
   test "service standard page has a title, summary and intro" do
@@ -12,9 +13,9 @@ class ServiceStandardTest < ActionDispatch::IntegrationTest
       }
     )
 
-    assert page.has_css?(".page-header__title", text: "Service Standard"), "No title found"
-    assert page.has_css?(".page-header__summary", text: "The Service Standard is a set of 14 criteria"), "No description found"
-    assert page.has_css?(".page-header__intro", text: "All public facing transactional services must meet the standard."), "No body found"
+    assert page.has_css?(".gem-c-title__text", text: "Service Standard"), "No title found"
+    assert page.has_css?(".app-c-page-header__summary", text: "The Service Standard is a set of 14 criteria"), "No description found"
+    assert page.has_css?(".app-c-page-header__intro", text: "All public facing transactional services must meet the standard."), "No body found"
   end
 
   test "service standard page has points" do
@@ -65,6 +66,6 @@ class ServiceStandardTest < ActionDispatch::IntegrationTest
   end
 
   def points
-    find_all('.service-standard-point')
+    find_all('.app-c-service-standard-point')
   end
 end

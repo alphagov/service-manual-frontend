@@ -11,8 +11,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <div class="app-c-page-header govuk-!-margin-top-3 govuk-!-margin-bottom-3">
-        <h1 class="govuk-heading-xl app-c-page-header__heading"><%= @content_item.title %></h1>
-        <p class="govuk-body-l govuk-!-margin-bottom-7">
+        <%= render "govuk_publishing_components/components/title", {
+          title: @content_item.title,
+        } %>
+        <p class="govuk-body-l govuk-!-margin-bottom-7 app-c-page-header__summary">
           <%= @content_item.content_item["description"] %>
         </p>
         <div class="app-c-page-header__intro govuk-!-padding-bottom-3">

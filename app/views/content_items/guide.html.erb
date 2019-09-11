@@ -16,7 +16,7 @@
   <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-two-thirds">
-      <div class="page-header">
+      <div class="app-c-page-header">
 
       <%= render "govuk_publishing_components/components/title", {
         context: @content_item.category_title,
@@ -24,7 +24,7 @@
         margin_bottom: 8
       } %>
       <% if @content_item.show_description? %>
-        <p class="govuk-body-l">
+        <p class="govuk-body-l app-c-page-header__summary">
           <%= @content_item.description %>
         </p>
       <% end %>
@@ -40,9 +40,9 @@
 
   <!-- Metadata-->
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-two-thirds app-c-metadata--heading">
       <%= render "govuk_publishing_components/components/metadata", {
-        last_updated: time_ago_in_words(@content_item.visible_updated_at),
+        last_updated: "#{time_ago_in_words(@content_item.visible_updated_at)} ago",
         from: @content_item.content_owners.map { |content_owner|
           link_to(content_owner.title, content_owner.href)
         }
@@ -88,11 +88,13 @@
             <% end %>
         </div>
         <% if @content_item.previous_changes.present? %>
-          <p><a href="#full-history" data-controls="full-history" data-expanded="false" role="button" aria-controls="full-history" aria-expanded="false">+ Show all page updates (<%= @content_item.previous_changes.length + 1 %>)</a></p>
-          <ol id="full-history" class="app-c-change-history__past js-hidden" aria-live="polite" role="region">
+          <p class="govuk-!-margin-bottom-3">
+            <a href="#full-history" data-controls="full-history" data-toggled-text="- Hide all page updates (<%= @content_item.previous_changes.length %>)" data-expanded="false" role="button" aria-controls="full-history" aria-expanded="false">+ Show all page updates (<%= @content_item.previous_changes.length %>)</a>
+          </p>
+          <ol id="full-history" class="app-c-change-history__past govuk-list js-hidden" aria-live="polite" role="region">
             <% @content_item.previous_changes.each do |previous_change| %>
               <li>
-                <%= render partial: 'shared/change_history', locals: {change: previous_change} %>
+                <%= render partial: 'shared/change_history', locals: { change: previous_change, compressed: true} %>
               </li>
             <% end %>
           </ol>

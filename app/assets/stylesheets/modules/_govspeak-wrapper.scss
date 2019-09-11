@@ -8,17 +8,12 @@
   .govuk-govspeak p,
   .govuk-govspeak ol,
   .govuk-govspeak ul {
+    line-height: 1.45;
     // govspeak margin bottom is 20px
     margin-bottom: $gutter-half;
   }
 
   .govuk-govspeak h2 {
-    margin-top: 15px;
-    padding-top: 15px;
-    // govspeak margin-top is 45px
-    @include media(tablet) {
-      margin-top: 15px;
-      padding-top: 30px;
-    }
+    @extend %govuk-heading-m;
   }
 }

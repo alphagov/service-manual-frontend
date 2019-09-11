@@ -1,6 +1,4 @@
 .app-c-service-standard-point {
-  $gutter-tablet: (govuk-spacing(6) * 1.5);  // 45px
-
   border-top: 1px solid $govuk-border-colour;
   margin-top: govuk-spacing(5);
   padding-top: govuk-spacing(5);
@@ -13,7 +11,7 @@
     margin-left: govuk-spacing(6);
 
     @include govuk-media-query($from: tablet) {
-      margin-left: $gutter-tablet;
+      margin-left: govuk-spacing(8);
     }
   }
 
@@ -22,7 +20,7 @@
     margin-left: (0 - govuk-spacing(6));
 
     @include govuk-media-query($from: tablet) {
-      margin-left: -$gutter-tablet;
+      margin-left: -govuk-spacing(8);
     }
   }
 
@@ -31,7 +29,7 @@
     margin-left: govuk-spacing(6);
 
     @include govuk-media-query($from: tablet) {
-      margin-left: $gutter-tablet;
+      margin-left: govuk-spacing(8);
     }
   }
 
