@@ -22,31 +22,29 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <div<% if @content_item.visually_collapsed? %> class="js-hidden" data-module="accordion-with-descriptions"<% end %>>
-          <div class="subsection-wrapper">
-            <% @content_item.groups.each_with_index do |link_group, idx| %>
-              <div class="subsection govuk-!-padding-bottom-5 js-subsection">
-              <% if link_group.name.present? %>
-                <div class="subsection__header">
-                  <h2 class="govuk-heading-m govuk-!-margin-bottom-1 subsection__title" id="<%= link_group.name.parameterize %>"><%= link_group.name %></h2>
-                <% if link_group.description.present? %>
-                  <p class="govuk-body govuk-!-margin-bottom-1 subsection__description"><%= link_group.description %></p>
-                <% end %>
-                </div>
-              <% end %>
-                <div class="subsection__content js-subsection-content" id="subsection_content_<%= idx %>">
-                  <ul class="govuk-list subsection__list">
-                    <% link_group.linked_items.each do |linked_item| %>
-                      <li class="subsection__list-item">
-                        <%= link_to linked_item.label, linked_item.href, class: 'govuk-link' %>
-                      </li>
-                    <% end %>
-                  </ul>
-                </div>
-              </div>
+      <%= render "govuk_publishing_components/components/accordion", {
+        items: @content_item.accordion_content
+      } if @content_item.display_as_accordion? %>
+
+      <% unless @content_item.display_as_accordion? %>
+        <% @content_item.groups.each_with_index do |link_group, idx| %>
+          <% if link_group.name.present? %>
+            <div class="subsection__header govuk-!-margin-bottom-3">
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-1 subsection__title" id="<%= link_group.name.parameterize %>"><%= link_group.name %></h2>
+            <% if link_group.description.present? %>
+              <p class="govuk-body govuk-!-margin-bottom-1 subsection__description"><%= link_group.description %></p>
             <% end %>
-          </div>
-        </div>
+            </div>
+          <% end %>
+          <ul class="govuk-list subsection__list govuk-!-margin-bottom-9">
+            <% link_group.linked_items.each do |linked_item| %>
+              <li class="subsection__list-item">
+                <%= link_to linked_item.label, linked_item.href, class: 'govuk-link' %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
     </div>
 
     <div class="govuk-grid-column-one-third">
@@ -70,8 +68,9 @@
           </nav>
         </div>
       <% end %>
+      <% # TODO: split this off into it's own partial %>
       <% if @content_item.email_alert_signup_link.present? %>
-        <div class="related-item">
+        <div class="related-item govuk-!-padding-top-4">
           <h2 class="govuk-heading-s govuk-!-margin-bottom-2" id="related-subscriptions">
             Get notifications
           </h2>

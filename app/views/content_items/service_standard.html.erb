@@ -42,7 +42,8 @@
     </div>
 
     <div class="govuk-grid-column-one-third">
-      <aside class="related">
+      <aside class="related govuk-!-padding-top-4">
+      <% # TODO: split this off into it's own partial %>
       <% if @content_item.email_alert_signup_link.present? %>
         <div class="related-item">
           <h2 class="govuk-heading-s govuk-!-margin-bottom-2" id="related-subscriptions">
