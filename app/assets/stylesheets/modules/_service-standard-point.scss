@@ -17,10 +17,10 @@
 
   &__number {
     float: left;
-    margin-left: (0 - govuk-spacing(6));
+    margin-left: -(govuk-spacing(6));
 
     @include govuk-media-query($from: tablet) {
-      margin-left: -govuk-spacing(8);
+      margin-left: -(govuk-spacing(8));
     }
   }
 

@@ -52,18 +52,18 @@
     <div class="govuk-grid-column-one-third">
       <aside class="related">
       <% if @content_item.content_owners.any? %>
-        <div class="related-item">
-          <h2 class="related-item__title" id="related-communities">
+        <div class="related-item govuk-!-padding-top-4 govuk-!-margin-bottom-5">
+          <h2 class="related-item__title govuk-heading-s govuk-!-margin-bottom-2" id="related-communities">
             <%= topic_related_communities_title(@content_item.content_owners) -%>
           </h2>
-          <p class="related-item__description">
+          <p class="related-item__description govuk-body">
             Find out what the cross-government community does and how to get involved.
           </p>
           <nav role="navigation" aria-labelledby="related-communities" class="related-communities">
-            <ul class="related-item__list">
+            <ul class="related-item__list govuk-list">
               <% @content_item.content_owners.each do |content_owner| %>
-                <li class="related-item__list-item">
-                  <%= link_to content_owner.title, content_owner.href %>
+                <li class="related-item__list-item govuk-body-s">
+                  <%= link_to content_owner.title, content_owner.href, class: 'govuk-link' %>
                 </li>
               <% end %>
             </ul>
