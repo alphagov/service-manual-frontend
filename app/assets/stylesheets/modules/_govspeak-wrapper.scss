@@ -10,7 +10,7 @@
   .govuk-govspeak ul {
     line-height: 1.45;
     // govspeak margin bottom is 20px
-    margin-bottom: $gutter-half;
+    margin-bottom: govuk-spacing(3);
   }
 
   .govuk-govspeak h2 {

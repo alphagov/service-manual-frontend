@@ -2,8 +2,11 @@
 <html>
 <head>
   <title><%= yield :title %> - GOV.UK</title>
-  <% # TODO: revert this to include IE specific and print specific stylesheets %>
-  <%= stylesheet_link_tag "application" %>
+  <!--[if gt IE 8]><!--><%= stylesheet_link_tag "application" %><!--<![endif]-->
+  <!--[if IE 6]><%= stylesheet_link_tag "application-ie6" %><script>var ieVersion = 6;</script><![endif]-->
+  <!--[if IE 7]><%= stylesheet_link_tag "application-ie7" %><script>var ieVersion = 7;</script><![endif]-->
+  <!--[if IE 8]><%= stylesheet_link_tag "application-ie8" %><script>var ieVersion = 8;</script><![endif]-->
+  <%= stylesheet_link_tag "print", media: "print" %>
 
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "start-modules" if Rails.env.test? %>

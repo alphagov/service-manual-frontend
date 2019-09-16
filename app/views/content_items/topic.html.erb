@@ -22,33 +22,33 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <%= render "govuk_publishing_components/components/accordion", {
-        items: @content_item.accordion_content
-      } if @content_item.display_as_accordion? %>
-
-      <% unless @content_item.display_as_accordion? %>
-        <% @content_item.groups.each_with_index do |link_group, idx| %>
+      <% if @content_item.display_as_accordion? %>
+        <%= render "govuk_publishing_components/components/accordion", {
+          items: @content_item.accordion_content
+        } %>
+      <% else %>
+        <% @content_item.groups.each_with_index { |link_group| %>
           <% if link_group.name.present? %>
             <div class="subsection__header govuk-!-margin-bottom-3">
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-1 subsection__title" id="<%= link_group.name.parameterize %>"><%= link_group.name %></h2>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-margin-top-3 subsection__title" id="<%= link_group.name.parameterize %>"><%= link_group.name %></h2>
             <% if link_group.description.present? %>
               <p class="govuk-body govuk-!-margin-bottom-1 subsection__description"><%= link_group.description %></p>
             <% end %>
             </div>
           <% end %>
-          <ul class="govuk-list subsection__list govuk-!-margin-bottom-9">
-            <% link_group.linked_items.each do |linked_item| %>
-              <li class="subsection__list-item">
+          <ul class="govuk-list govuk-!-margin-bottom-9">
+            <% link_group.linked_items.each { |linked_item| %>
+              <li>
                 <%= link_to linked_item.label, linked_item.href, class: 'govuk-link' %>
               </li>
-            <% end %>
+            <% } %>
           </ul>
-        <% end %>
+        <% } %>
       <% end %>
     </div>
 
     <div class="govuk-grid-column-one-third">
-      <aside class="related">
+      <aside class="related govuk-!-margin-top-3">
       <% if @content_item.content_owners.any? %>
         <div class="related-item govuk-!-padding-top-4 govuk-!-margin-bottom-5">
           <h2 class="related-item__title govuk-heading-s govuk-!-margin-bottom-2" id="related-communities">

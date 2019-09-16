@@ -1,12 +1,12 @@
 .collection {
-  border-bottom: 1px solid $border-colour;
+  border-bottom: 1px solid $govuk-border-colour;
 
-  padding-bottom: $gutter-half;
-  margin-bottom: $gutter-half;
+  padding-bottom: govuk-spacing(3);
+  margin-bottom: govuk-spacing(3);
 
   @include media(tablet) {
-    padding-bottom: $gutter;
-    margin-bottom: $gutter;
+    padding-bottom: govuk-spacing(6);
+    margin-bottom: govuk-spacing(6);
   }
 
   &:last-child {
@@ -22,7 +22,7 @@
 
   &__description {
     @include core-24;
-    color: $secondary-text-colour;
+    color: $govuk-secondary-text-colour;
     margin-top: 0;
   }
 

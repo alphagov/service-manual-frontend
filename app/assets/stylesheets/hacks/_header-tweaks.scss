@@ -2,7 +2,7 @@
 // this work, we need to slightly tweak the header's CSS from our app.
 .header-title {
   float: left;
-  color: $white;
+  color: govuk-colour("white");
   @include bold-24;
 
   // When the title appears on its own line (the search box is hidden and only a

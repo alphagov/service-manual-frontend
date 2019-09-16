@@ -37,12 +37,12 @@ class TopicPresenter < ContentItemPresenter
     @visually_collapsed
   end
 
-  def expanded?
+  def visually_expanded?
     !visually_collapsed?
   end
 
   def display_as_accordion?
-    groups.count > 1 && visually_collapsed?
+    groups.count > 2 && visually_collapsed?
   end
 
   def accordion_content
@@ -51,20 +51,6 @@ class TopicPresenter < ContentItemPresenter
     #
     # This method returns the content in the required shape from the hash
     # supplied by the `groups` method.
-    #
-    # The hash for each accordion section is required to have `name`,
-    # `description`, and `linked_items`. Minimal example:
-    # {
-    #   name: 'Accordion section heading',
-    #   description: 'Accordion section summary',
-    #   linked_items: [
-    #     {
-    #       label: 'Link to example',
-    #       href: 'http://example.com',
-    #     }
-    #   ],
-    # }
-
 
     groups.map { |section|
       {
@@ -77,7 +63,7 @@ class TopicPresenter < ContentItemPresenter
         content: {
           html: accordion_section_links(section.linked_items),
         },
-        expanded: expanded?,
+        expanded: visually_expanded?,
       }
     }
   end
