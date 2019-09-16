@@ -68,17 +68,7 @@
           </nav>
         </div>
       <% end %>
-      <% # TODO: split this off into it's own partial %>
-      <% if @content_item.email_alert_signup_link.present? %>
-        <div class="related-item govuk-!-padding-top-4">
-          <h2 class="govuk-heading-s govuk-!-margin-bottom-2" id="related-subscriptions">
-            Get notifications
-          </h2>
-          <p class="govuk-body">When any guidance within this topic is updated
-            <%= link_to "email", @content_item.email_alert_signup_link, class: 'govuk-link related-item__email-link' %>
-          </p>
-        </div>
-      <% end %>
+      <%= render partial: 'shared/email_signup' if @content_item.email_alert_signup_link.present? %>
       </aside>
     </div>
 

@@ -43,28 +43,17 @@
 
     <div class="govuk-grid-column-one-third">
       <aside class="related govuk-!-padding-top-4">
-      <% # TODO: split this off into it's own partial %>
-      <% if @content_item.email_alert_signup_link.present? %>
-        <div class="related-item">
-          <h2 class="govuk-heading-s govuk-!-margin-bottom-2" id="related-subscriptions">
-            Get notifications
-          </h2>
-          <p class="govuk-body">When any points in the Service Standard are updated
-            <%= link_to "email", @content_item.email_alert_signup_link, class: 'govuk-link related-item__email-link' %>
-          </p>
-        </div>
-      <% end %>
-
-      <% if @content_item.poster_url.present? %>
-        <div class="related-item">
-          <h2 class="govuk-heading-s govuk-!-margin-bottom-2" id="download-poster">
-            Download the poster
-          </h2>
-          <p class="govuk-body">
-            <%= link_to "Download and print your own Service Standard poster", @content_item.poster_url, class: 'govuk-link' %>
-          </p>
-        </div>
-      <% end %>
+        <%= render partial: 'shared/email_signup' if @content_item.email_alert_signup_link.present? %>
+        <% if @content_item.poster_url.present? %>
+          <div class="related-item">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-2" id="download-poster">
+              Download the poster
+            </h2>
+            <p class="govuk-body">
+              <%= link_to "Download and print your own Service Standard poster", @content_item.poster_url, class: 'govuk-link' %>
+            </p>
+          </div>
+        <% end %>
       </aside>
     </div>
   </div>
