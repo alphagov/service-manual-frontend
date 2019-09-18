@@ -1,37 +1,19 @@
-.collection {
+.app-c-collection {
   border-bottom: 1px solid $govuk-border-colour;
-
   padding-bottom: govuk-spacing(3);
   margin-bottom: govuk-spacing(3);
 
   @include media(tablet) {
     padding-bottom: govuk-spacing(6);
-    margin-bottom: govuk-spacing(6);
+    margin-bottom: govuk-spacing(9);
   }
 
   &:last-child {
-    margin-bottom: 0;
     border-bottom: none;
-  }
-
-  &__title {
-    @include bold-36;
-    margin-bottom: 5px;
-    margin-top: 1.25em;
+    margin-bottom: 0;
   }
 
   &__description {
-    @include core-24;
     color: $govuk-secondary-text-colour;
-    margin-top: 0;
-  }
-
-  &__link {
-    @include bold-24;
-    margin: 0.8333333333em 0;
-  }
-
-  &__link-description {
-    @include core-19;
   }
 }

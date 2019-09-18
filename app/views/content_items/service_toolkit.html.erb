@@ -1,38 +1,43 @@
 <%
   content_for :title, "Service Toolkit"
   content_for :header_title, "Service Toolkit"
-  content_for :body_classes, "full-width"
+  content_for :body_classes, "app-full-width"
 %>
-<header class="hero">
-  <div class="hero__content">
-    <div class="grid-row">
-      <div class="column-two-thirds">
-        <h1 class="hero__title">Design and build government services</h1>
+<header class="app-c-hero">
+  <div class="app-c-hero__content govuk-width-container">
+    <div class="govuk-main-wrapper">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="app-c-hero__title govuk-heading-xl govuk-!-margin-bottom-6 app-c-hero__heading--inverse">Design and build government services</h1>
 
-        <p class="hero__description">
-          All you need to design, build and run services that meet government standards.
-        </p>
+          <p class="app-c-hero__descriptio govuk-body-l govuk-!-margin-bottom-3 app-c-hero__body--inverse">
+            All you need to design, build and run services that meet government standards.
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </header>
 
-<div class="full-page-width-wrapper">
+<div class="govuk-width-container">
   <% @content_item.collections.each do |collection| %>
-  <div class="collection">
-    <h2 id="<%= collection["title"].parameterize %>" class="collection__title"><%= collection["title"] %></h2>
-    <p class="collection__description"><%= collection["description"] %></p>
-
-    <% collection["links"].each_slice(2) do |row_of_links| %>
-      <div class="grid-row">
-        <% row_of_links.each do | link | %>
-          <div class="column-half">
-            <h3 class="collection__link"><%= link_to link["title"], link["url"] %></h3>
-            <p class="collection__link-description"><%= link["description"] %></p>
-          </div>
-        <% end %>
+    <div class="app-c-collection govuk-!-margin-top-7">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 id="<%= collection["title"].parameterize %>" class="app-c-collection__title govuk-heading-l govuk-!-margin-bottom-1"><%= collection["title"] %></h2>
+          <p class="app-c-collection__description govuk-body-l"><%= collection["description"] %></p>
+        </div>
       </div>
-    <% end %>
-  </div>
+      <% collection["links"].each_slice(2) do |row_of_links| %>
+        <div class="govuk-grid-row">
+          <% row_of_links.each do | link | %>
+            <div class="govuk-grid-column-one-half">
+              <h3 class="app-c-collection__link govuk-heading-m govuk-!-margin-bottom-2"><%= link_to link["title"], link["url"], class: "govuk-link" %></h3>
+              <p class="app-c-collection__link-description govuk-body"><%= link["description"] %></p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>

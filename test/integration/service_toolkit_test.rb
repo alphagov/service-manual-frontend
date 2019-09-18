@@ -99,7 +99,7 @@ class ServiceToolkitTest < ActionDispatch::IntegrationTest
 private
 
   def collections
-    find_all('.collection')
+    find_all('.app-c-collection')
   end
 
   def the_first_collection
