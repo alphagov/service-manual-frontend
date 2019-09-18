@@ -1,6 +1,7 @@
 $govuk-compatibility-govuktemplate: true;
 $govuk-compatibility-govukfrontendtoolkit: true;
 $govuk-compatibility-govukelements: true;
+
 @import "govuk_publishing_components/all_components";
 
 @import "common";
@@ -15,8 +16,6 @@ $govuk-compatibility-govukelements: true;
 @import "modules/community-contact";
 @import "modules/govspeak-wrapper";
 @import "modules/hero";
-@import "modules/link-unit";
-@import "modules/main-service-manual";
 @import "modules/notice";
 @import "modules/page-contents";
 @import "modules/page-header";

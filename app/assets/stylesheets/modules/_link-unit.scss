@@ -1,9 +1,0 @@
-.link-unit {
-  &__title {
-    @include bold-19;
-  }
-
-  &__description {
-    @include core-16($line-height: 1.5);
-  }
-}
