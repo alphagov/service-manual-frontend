@@ -114,7 +114,7 @@ GEM
     govuk_frontend_toolkit (8.2.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
-    govuk_publishing_components (21.17.0)
+    govuk_publishing_components (21.18.0)
       gds-api-adapters
       govuk_app_config
       kramdown
@@ -128,7 +128,7 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    i18n (1.7.0)
+    i18n (1.7.1)
       concurrent-ruby (~> 1.0)
     image_size (2.0.1)
     io-like (0.3.0)
@@ -142,7 +142,7 @@ GEM
     json (2.2.0)
     json-schema (2.8.0)
       addressable (>= 2.4)
-    kgio (2.11.2)
+    kgio (2.11.3)
     kramdown (2.1.0)
     link_header (0.0.8)
     listen (3.2.1)
@@ -193,7 +193,7 @@ GEM
       pry (~> 0.10)
     public_suffix (4.0.3)
     rack (2.0.8)
-    rack-cache (1.10.0)
+    rack-cache (1.11.0)
       rack (>= 0.4)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -232,7 +232,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
-    raindrops (0.19.0)
+    raindrops (0.19.1)
     rake (12.3.3)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
@@ -355,7 +355,7 @@ DEPENDENCIES
   govuk-lint
   govuk_app_config (~> 2.0)
   govuk_elements_rails
-  govuk_publishing_components (~> 21.17.0)
+  govuk_publishing_components (~> 21.18.0)
   jasmine-rails
   listen (>= 3.0.5, < 3.3)
   phantomjs (~> 2.1, >= 2.1.1.0)
