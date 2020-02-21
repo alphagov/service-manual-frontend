@@ -107,7 +107,7 @@ GEM
       sentry-raven (>= 2.7.1, < 2.14.0)
       statsd-ruby (~> 1.4.0)
       unicorn (>= 5.4, < 5.6)
-    govuk_publishing_components (21.25.0)
+    govuk_publishing_components (21.26.0)
       gds-api-adapters
       govuk_app_config
       kramdown
@@ -347,7 +347,7 @@ DEPENDENCIES
   govuk-content-schema-test-helpers (~> 1.6)
   govuk-lint
   govuk_app_config (~> 2.0)
-  govuk_publishing_components (~> 21.25.0)
+  govuk_publishing_components (~> 21.26.0)
   jasmine-rails
   listen (>= 3.0.5, < 3.3)
   phantomjs (~> 2.1, >= 2.1.1.0)
