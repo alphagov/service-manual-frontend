@@ -10,7 +10,7 @@ class PhaseLabelTest < ActionDispatch::IntegrationTest
 
     visit guide["base_path"]
 
-    assert page.has_content?("Complete our quick 5-question survey")
+    assert page.has_content?("Contact the Service Manual team")
   end
 
   test "renders custom message for service manual homepage" do
@@ -21,7 +21,7 @@ class PhaseLabelTest < ActionDispatch::IntegrationTest
 
     visit homepage["base_path"]
 
-    assert page.has_content?("Complete our quick 5-question survey")
+    assert page.has_content?("Contact the Service Manual team")
   end
 
   test "alpha phase label is displayed for a guide in phase 'alpha'" do
@@ -45,6 +45,6 @@ class PhaseLabelTest < ActionDispatch::IntegrationTest
 
     visit guide["base_path"]
 
-    assert_not page.has_content?("Complete our quick 5-question survey")
+    assert_not page.has_content?("Contact the Service Manual team")
   end
 end

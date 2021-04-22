@@ -6,10 +6,4 @@ module PhaseLabelHelper
              message: message
     end
   end
-
-  def survey_url
-    url = "https://www.smartsurvey.co.uk/s/HGLV5/"
-    url += "?c=#{request.path}" if request.path.present?
-    url
-  end
 end
