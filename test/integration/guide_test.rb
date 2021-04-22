@@ -18,7 +18,7 @@ class GuideTest < ActionDispatch::IntegrationTest
       stub_content_store_has_item(base_path, example)
       visit base_path
 
-      within(".app-metadata--heading") do
+      within(".app-change-history") do
         assert page.has_content?("5 minutes ago")
       end
     end
@@ -28,7 +28,7 @@ class GuideTest < ActionDispatch::IntegrationTest
     travel_to Time.zone.local(2015, 10, 10, 0, 0, 0) do
       setup_and_visit_example("service_manual_guide", "service_manual_guide")
 
-      within(".app-metadata--heading") do
+      within(".app-change-history") do
         assert page.has_content?("about 16 hours ago")
       end
     end
