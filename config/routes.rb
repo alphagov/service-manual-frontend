@@ -11,7 +11,6 @@ Rails.application.routes.draw do
           }
 
   with_options format: false do |r|
-    r.get "healthcheck", to: proc { [200, {}, [""]] }
     r.get "healthcheck/live", to: proc { [200, {}, %w[OK]] }
     r.get "healthcheck/ready", to: GovukHealthcheck.rack_response
     r.get "*path" => "content_items#show", constraints: { path: %r{.*} }
