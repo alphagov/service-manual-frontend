@@ -32,7 +32,7 @@ private
 
   def present(content_item)
     class_name = content_item["document_type"].sub(/^service_manual_/, "").classify
-    presenter_name = class_name + "Presenter"
+    presenter_name = "#{class_name}Presenter"
     presenter_class = Object.const_get(presenter_name)
     presenter_class.new(content_item)
   rescue NameError
@@ -66,7 +66,7 @@ private
   end
 
   def content_item_path
-    "/" + params[:path]
+    "/#{params[:path]}"
   end
 
   def content_store

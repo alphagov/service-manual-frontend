@@ -9,7 +9,7 @@ require "webmock/minitest"
 require "capybara/rails"
 require "slimmer/test"
 
-Dir[File.dirname(__FILE__) + "/support/**/*.rb"].sort.each { |file| require file }
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].sort.each { |file| require file }
 
 GovukTest.configure
 

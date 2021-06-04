@@ -41,7 +41,7 @@ class ContentItemsControllerTest < ActionController::TestCase
   test "returns 404 for item not in content store" do
     path = "government/case-studies/boost-chocolate-production"
 
-    stub_content_store_does_not_have_item("/" + path)
+    stub_content_store_does_not_have_item("/#{path}")
 
     get :show, params: { path: path }
     assert_response :not_found
@@ -49,7 +49,7 @@ class ContentItemsControllerTest < ActionController::TestCase
 
   test "returns 403 for access-limited item" do
     path = "government/case-studies/super-sekrit-document"
-    url = content_store_endpoint + "/content/" + path
+    url = "#{content_store_endpoint}/content/#{path}"
     stub_request(:get, url).to_return(status: 403, headers: {})
 
     get :show, params: { path: path }
@@ -83,7 +83,7 @@ class ContentItemsControllerTest < ActionController::TestCase
 
   test "raises error if content item's document type is unsupported" do
     path = "government/some-type/mysterious-document"
-    base_path = "/" + path
+    base_path = "/#{path}"
     error_message = <<~"ERROR"
       The content item at base path #{base_path} is of
       document_type \"some-type\", which this
