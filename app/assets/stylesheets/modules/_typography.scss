@@ -3,14 +3,3 @@
 .app-body-s {
   line-height: 1.45;
 }
-
-.app-link--inverse {
-  &:link,
-  &:visited {
-    color: govuk-colour("white");
-  }
-
-  &:focus {
-    @include govuk-focused-text;
-  }
-}
