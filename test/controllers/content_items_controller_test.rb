@@ -82,29 +82,30 @@ class ContentItemsControllerTest < ActionController::TestCase
   end
 
   test "raises error if content item's document type is unsupported" do
-    path = "government/some-type/mysterious-document"
-    base_path = "/#{path}"
+    base_path = "/service-manual/mysterious-document"
     error_message = <<~"ERROR"
       The content item at base path #{base_path} is of
-      document_type \"some-type\", which this
+      document_type \"service_manual_some_type\", which this
       application does not support.
     ERROR
 
-    stub_content_store_has_item(base_path, { base_path: base_path, document_type: "some-type" })
+    stub_content_store_has_item(base_path, { base_path: base_path, document_type: "service_manual_some_type" })
 
-    error = assert_raises(RuntimeError) { get :show, params: { path: path } }
+    error = assert_raises(RuntimeError) { get :show, params: { path: base_path.delete_prefix("/") } }
     assert_match error_message, error.message
   end
 
-  test "raises error if request is for the applications root" do
-    stub_content_store_has_item("/", { base_path: "/", document_type: "some-type" })
-    error_message = <<~ERROR
-      This application does not serve anything at its root. The homepage, if
-      published in the content store, can be found at /service-manual.
-      See the README for more information.
+  test "raises error if content item's document type is not prefixed with service_manual" do
+    base_path = "/"
+    error_message = <<~"ERROR"
+      The content item at base path #{base_path} is of
+      document_type \"homepage\", which this
+      application does not support.
     ERROR
 
-    error = assert_raises(RuntimeError) { get :show, params: { path: "" } }
+    stub_content_store_has_item(base_path, { base_path: base_path, document_type: "homepage" })
+
+    error = assert_raises(RuntimeError) { get :show, params: { path: base_path.delete_prefix("/") } }
     assert_match error_message, error.message
   end
 

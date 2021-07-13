@@ -31,24 +31,20 @@ private
   end
 
   def present(content_item)
-    class_name = content_item["document_type"].sub(/^service_manual_/, "").classify
+    unsupported_message = <<~ERROR
+      The content item at base path #{content_item['base_path']} is of
+      document_type \"#{content_item['document_type']}\", which this
+      application does not support.
+    ERROR
+
+    raise unsupported_message unless content_item["document_type"].starts_with?("service_manual_")
+
+    class_name = content_item["document_type"].delete_prefix("service_manual_").classify
     presenter_name = "#{class_name}Presenter"
     presenter_class = Object.const_get(presenter_name)
     presenter_class.new(content_item)
   rescue NameError
-    if content_item["base_path"] == "/"
-      raise <<~ERROR
-        This application does not serve anything at its root. The homepage, if
-        published in the content store, can be found at /service-manual.
-        See the README for more information.
-      ERROR
-    else
-      raise <<~ERROR
-        The content item at base path #{content_item['base_path']} is of
-        document_type \"#{content_item['document_type']}\", which this
-        application does not support.
-      ERROR
-    end
+    raise unsupported_message
   end
 
   def content_item_template
