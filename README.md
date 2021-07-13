@@ -1,39 +1,26 @@
 # Service Manual Frontend
 
-Service Manual Frontend is a public-facing app to display the service manual formats on GOV.UK.
+A public-facing GOV.UK application used to display the [service manual](https://www.gov.uk/service-manual) with content fetched from the [Content Store](https://github.com/alphagov/content-store).
+
+## Live examples
+
+- https://www.gov.uk/service-manual
+- https://www.gov.uk/service-manual/agile-delivery
+- https://www.gov.uk/service-manual/agile-delivery/agile-methodologies
 
 ## Technical documentation
 
-This is a Ruby on Rails application that fetches documents from
-[content-store](https://github.com/alphagov/content-store) and displays them.
+This is a Ruby on Rails app, and should follow [our Rails app conventions](https://docs.publishing.service.gov.uk/manual/conventions-for-rails-applications.html).
 
-### Dependencies
+You can use the [GOV.UK Docker environment](https://github.com/alphagov/govuk-docker) or the local `startup.sh` script to run the app. Read the [guidance on local frontend development](https://docs.publishing.service.gov.uk/manual/local-frontend-development.html) to find out more about each approach, before you get started.
 
-- [content-store](https://github.com/alphagov/content-store) - provides documents
-- [static](https://github.com/alphagov/static) - provides shared GOV.UK assets and templates.
-
-## Development notes
-
-The application *does not serve content at its root (/)* - the
-homepage will be found at service-manual-frontend.dev.gov.uk/service-manual but
-only if the content item for the homepage exists in the content store.
-
-You can achieve this by restoring from a production backup, publishing the home
-page using the rake task in service-manual-publisher or by using the dummy
-content store.
+If you are using GOV.UK Docker, remember to combine it with the commands that follow. See the [GOV.UK Docker usage instructions](https://github.com/alphagov/govuk-docker#usage) for examples.
 
 ### Running the test suite
 
-The test suite relies on the presence of the
-[govuk-content-schemas](http://github.com/alphagov/govuk-content-schemas)
-repository. If it is present at the same directory level as
-the service-manual-frontend repository then run the tests with:
-
-`bundle exec rake`
-
-Or to specify the location explicitly:
-
-`GOVUK_CONTENT_SCHEMAS_PATH=/some/dir/govuk-content-schemas bundle exec rake`
+```
+bundle exec rake
+```
 
 ## Licence
 
