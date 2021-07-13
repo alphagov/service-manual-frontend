@@ -35,31 +35,6 @@ Or to specify the location explicitly:
 
 `GOVUK_CONTENT_SCHEMAS_PATH=/some/dir/govuk-content-schemas bundle exec rake`
 
-### Use of BEM
-
-The Service manual frontend application uses a modified version of [the BEM methodology](https://en.bem.info),
-coined by [Harry Roberts](https://en.bem.info/methodology/naming-convention/#alternative-naming-schemes).
-
-It uses the following conventions:
-* block, element and modifier names are written in lower case
-* words within the names of BEM entities are separated by a hyphen (-)
-* an element name is separated from a block name by a double underscore (__)
-* modifiers are delimited by double hyphens (--)
-* [Key-value type modifiers](https://en.bem.info/methodology/naming-convention/#element-modifier) are not used
-
-A block:
-
-    .button
-
-An element:
-
-    .button__icon
-
-A modifier:
-
-    .button--large
-
-
 ## Licence
 
 [MIT License](LICENCE)
