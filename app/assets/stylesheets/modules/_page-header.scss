@@ -1,11 +1,13 @@
 .app-page-header {
   &__intro {
     p {
-      @extend %govuk-body-m;
+      @include govuk-text-colour;
+      @include govuk-font($size: 24, $weight: bold);
+      @include govuk-responsive-margin(4, "bottom");
     }
 
     a {
-      @extend %govuk-link;
+      @include govuk-link-common;
     }
   }
 

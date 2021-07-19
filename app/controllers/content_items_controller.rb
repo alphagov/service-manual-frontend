@@ -7,7 +7,7 @@ class ContentItemsController < ApplicationController
   rescue_from GdsApi::HTTPForbidden, with: :error_403
 
   def show
-    slimmer_template :without_footer_links
+    slimmer_template :gem_layout_no_footer_navigation
 
     if load_content_item
       set_expiry
