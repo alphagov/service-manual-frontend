@@ -2,12 +2,13 @@
   &__intro {
     p {
       @include govuk-text-colour;
-      @include govuk-font($size: 24, $weight: bold);
+      @include govuk-font($size: 19);
       @include govuk-responsive-margin(4, "bottom");
     }
 
     a {
       @include govuk-link-common;
+      @include govuk-link-style-default;
     }
   }
 

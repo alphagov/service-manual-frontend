@@ -22,6 +22,7 @@ $govuk-new-link-styles: true;
 
 // CSS that could be better, mostly overriding Slimmer...
 @import "hacks/full-width";
+@import "hacks/js-hidden";
 
 // Modules
 @import "modules/change-history";
