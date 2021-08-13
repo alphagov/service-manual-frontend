@@ -1,10 +1,8 @@
-$govuk-compatibility-govuktemplate: true;
-$govuk-compatibility-govukelements: true;
+$govuk-compatibility-govuktemplate: false;
 $govuk-use-legacy-palette: false;
 $govuk-new-link-styles: true;
 
 @import 'govuk_publishing_components/govuk_frontend_support';
-@import 'govuk_publishing_components/component_support';
 @import 'govuk_publishing_components/components/accordion';
 @import 'govuk_publishing_components/components/breadcrumbs';
 @import 'govuk_publishing_components/components/button';
@@ -24,7 +22,7 @@ $govuk-new-link-styles: true;
 
 // CSS that could be better, mostly overriding Slimmer...
 @import "hacks/full-width";
-@import "hacks/header-tweaks";
+@import "hacks/js-hidden";
 
 // Modules
 @import "modules/change-history";

@@ -98,7 +98,7 @@
 
     self.updateActiveNavItem = function () {
       var windowVerticalPosition = self.getWindowPositions().scrollTop
-      var footerPosition = self.getFooterPosition($('#footer'))
+      var footerPosition = self.getFooterPosition($('.govuk-footer'))
 
       $.each(self.$anchors, function (i) {
         var theID = anchorIDs[i]

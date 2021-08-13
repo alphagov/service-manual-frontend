@@ -13,7 +13,6 @@
 src_files:
   - "spec/javascripts/vendor/jquery-1.11.3.min.js"
   - "spec/javascripts/vendor/jasmine-jquery.js"
-  - "spec/javascripts/vendor/mock-ajax.js"
   - "assets/application.js"
 
 # stylesheets
