@@ -15,7 +15,9 @@
 </head>
 <body<% if content_for?(:body_classes) %> class="<%= content_for(:body_classes) %>"<% end %>>
   <div class="slimmer-inside-header">
-      <span class="header-title"><%= content_for(:header_title) || "Service Manual" %></span>
+    <span class="govuk-header__product-name gem-c-header__product-name">
+      <%= content_for(:header_title) || "Service Manual" %>
+    </span>
   </div>
 
   <div id="wrapper" class="app-!-full-width-override <%= wrapper_class %>">
