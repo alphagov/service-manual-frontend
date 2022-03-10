@@ -9,8 +9,6 @@ RUN apt-get update -qq && \
     apt-get install -y build-essential nodejs && \
     apt-get clean
 
-RUN bundle config set force_ruby_platform true
-
 RUN mkdir /app
 
 WORKDIR /app
@@ -19,6 +17,7 @@ COPY Gemfile Gemfile.lock .ruby-version /app/
 
 RUN bundle config set deployment 'true' && \
     bundle config set without 'development test' && \
+    bundle config set force_ruby_platform true \
     bundle install --jobs 4 --retry=2
 
 COPY . /app
@@ -29,7 +28,7 @@ RUN GOVUK_APP_DOMAIN=www.gov.uk \
 
 FROM $base_image
 
-ENV RAILS_ENV=production GOVUK_APP_NAME=service-manual-frontend GOVUK_APP_DOMAIN=www.gov.uk GOVUK_WEBSITE_ROOT=https://www.gov.uk PORT=3122
+ENV RAILS_ENV=production GOVUK_APP_NAME=service-manual-frontend
 
 RUN apt-get update -qy && \
     apt-get upgrade -y && \

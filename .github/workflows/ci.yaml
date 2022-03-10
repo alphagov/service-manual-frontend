@@ -17,4 +17,3 @@ jobs:
     secrets:
       AWS_GOVUK_ECR_ACCESS_KEY_ID: ${{ secrets.AWS_GOVUK_ECR_ACCESS_KEY_ID }}
       AWS_GOVUK_ECR_SECRET_ACCESS_KEY: ${{ secrets.AWS_GOVUK_ECR_SECRET_ACCESS_KEY }}
-      
