@@ -31,6 +31,5 @@ group :test do
   gem "pry-byebug"
   gem "rails-controller-testing"
   gem "simplecov"
-  gem "webdrivers"
   gem "webmock", require: false
 end

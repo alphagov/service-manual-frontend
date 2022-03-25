@@ -374,7 +374,6 @@ DEPENDENCIES
   simplecov
   slimmer
   uglifier
-  webdrivers
   webmock
 
 BUNDLED WITH
