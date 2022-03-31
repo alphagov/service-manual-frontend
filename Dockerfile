@@ -13,6 +13,8 @@ RUN useradd rubytest
 
 WORKDIR /app
 
+USER rubytest
+
 RUN chown -R rubytest: /app \
     && chmod -R u+w /app
 
@@ -34,6 +36,7 @@ RUN apt-get update -qy && \
     apt-get upgrade -y && \
     apt-get install -y nodejs && \
     apt-get clean
+USER rubytest
 WORKDIR /app
 COPY --chown=rubytest --from=builder /usr/local/bundle/ /usr/local/bundle/
 COPY --chown=rubytest --from=builder /app ./
