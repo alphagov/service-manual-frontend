@@ -8,14 +8,20 @@ RUN apt-get update -qy && \
     apt-get upgrade -y && \
     apt-get install -y build-essential nodejs && \
     apt-get clean
-RUN mkdir /app
+
+RUN useradd rubytest
+
 WORKDIR /app
-COPY Gemfile Gemfile.lock .ruby-version /app/
+
+RUN chown -R rubytest: /app \
+    && chmod -R u+w /app
+
+COPY --chown=rubytest Gemfile Gemfile.lock .ruby-version /app/
 RUN bundle config set force_ruby_platform true && \
     bundle config set deployment 'true' && \
     bundle config set without 'development test' && \
     bundle install --jobs 4 --retry=2
-COPY . /app
+COPY --chown=rubytest . /app
 # TODO: We probably don't want assets in the image; remove this once we have a proper deployment process which uploads to (e.g.) S3.
 RUN GOVUK_APP_DOMAIN=www.gov.uk \
     GOVUK_WEBSITE_ROOT=https://www.gov.uk \
@@ -29,6 +35,6 @@ RUN apt-get update -qy && \
     apt-get install -y nodejs && \
     apt-get clean
 WORKDIR /app
-COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
-COPY --from=builder /app ./
+COPY --chown=rubytest --from=builder /usr/local/bundle/ /usr/local/bundle/
+COPY --chown=rubytest --from=builder /app ./
 CMD bundle exec puma
