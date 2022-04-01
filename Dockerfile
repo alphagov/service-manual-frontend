@@ -29,6 +29,7 @@ RUN apt-get update -qy && \
     apt-get upgrade -y && \
     apt-get install -y nodejs && \
     apt-get clean
+RUN useradd rubytest 
 USER rubytest
 WORKDIR /app
 COPY --chown=rubytest --from=builder /usr/local/bundle/ /usr/local/bundle/
