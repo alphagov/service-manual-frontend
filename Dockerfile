@@ -9,21 +9,14 @@ RUN apt-get update -qy && \
     apt-get install -y build-essential nodejs && \
     apt-get clean
 
-RUN useradd rubytest
-
 WORKDIR /app
 
-USER rubytest
-
-RUN chown -R rubytest: /app \
-    && chmod -R u+w /app
-
-COPY --chown=rubytest Gemfile Gemfile.lock .ruby-version /app/
+COPY Gemfile Gemfile.lock .ruby-version /app/
 RUN bundle config set force_ruby_platform true && \
     bundle config set deployment 'true' && \
     bundle config set without 'development test' && \
     bundle install --jobs 4 --retry=2
-COPY --chown=rubytest . /app
+COPY . /app
 # TODO: We probably don't want assets in the image; remove this once we have a proper deployment process which uploads to (e.g.) S3.
 RUN GOVUK_APP_DOMAIN=www.gov.uk \
     GOVUK_WEBSITE_ROOT=https://www.gov.uk \
