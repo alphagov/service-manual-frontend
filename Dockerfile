@@ -29,7 +29,7 @@ RUN apt-get update -qy && \
     apt-get upgrade -y && \
     apt-get install -y nodejs && \
     apt-get clean
-RUN useradd -u 2000 -g 3000 appuser
+RUN useradd -u 2000 -U -g 3000 appuser
 USER appuser
 WORKDIR /app
 COPY --chown=appuser --from=builder /usr/local/bundle/ /usr/local/bundle/
