@@ -8,8 +8,9 @@ RUN apt-get update -qy && \
     apt-get upgrade -y && \
     apt-get install -y build-essential nodejs && \
     apt-get clean
-RUN mkdir /app
+
 WORKDIR /app
+
 COPY Gemfile Gemfile.lock .ruby-version /app/
 RUN bundle config set force_ruby_platform true && \
     bundle config set deployment 'true' && \
@@ -28,7 +29,9 @@ RUN apt-get update -qy && \
     apt-get upgrade -y && \
     apt-get install -y nodejs && \
     apt-get clean
+RUN useradd appuser 
+USER appuser
 WORKDIR /app
-COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
-COPY --from=builder /app ./
+COPY --chown=appuser --from=builder /usr/local/bundle/ /usr/local/bundle/
+COPY --chown=appuser --from=builder /app ./
 CMD bundle exec puma
