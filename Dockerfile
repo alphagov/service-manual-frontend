@@ -30,7 +30,7 @@ RUN apt-get update -qy && \
     apt-get install -y nodejs && \
     apt-get clean
 RUN groupadd -g 3000 appuser \
-    && useradd -u 2000 -G appuser appuser
+    && useradd -u 2000 -g appuser appuser
 USER appuser
 WORKDIR /app
 COPY --chown=appuser --from=builder /usr/local/bundle/ /usr/local/bundle/
