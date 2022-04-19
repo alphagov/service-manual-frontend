@@ -1,4 +1,4 @@
-ARG base_image=ruby:2.7.5-slim-buster
+FROM ruby:2.7.6
 
 FROM $base_image AS builder
 # This image is only intended to be able to run this app in a production RAILS_ENV
