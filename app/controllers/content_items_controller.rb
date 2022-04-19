@@ -7,7 +7,7 @@ class ContentItemsController < ApplicationController
   rescue_from GdsApi::HTTPForbidden, with: :error_403
 
   def show
-    slimmer_template :gem_layout_no_footer_navigation
+    slimmer_template layout
 
     if load_content_item
       set_expiry
@@ -21,6 +21,11 @@ class ContentItemsController < ApplicationController
   end
 
 private
+
+  def layout
+    paths = %w[service-manual service-toolkit]
+    paths.include?(params[:path]) ? "gem_layout_full_width_no_footer_navigation" : "gem_layout_no_footer_navigation"
+  end
 
   def load_content_item
     @content_item = present(
