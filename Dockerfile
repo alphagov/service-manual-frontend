@@ -23,7 +23,7 @@ RUN GOVUK_APP_DOMAIN=www.gov.uk \
     bundle exec rails assets:precompile
 
 FROM $base_image
-ENV RAILS_ENV=production GOVUK_APP_NAME=service-manual-frontend
+ENV GOVUK_PROMETHEUS_EXPORTER=true RAILS_ENV=production GOVUK_APP_NAME=service-manual-frontend
 # bundler seems to need nodejs installed - or at least a JavaScript runtime
 RUN apt-get update -qy && \
     apt-get upgrade -y && \
