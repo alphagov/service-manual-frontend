@@ -30,10 +30,10 @@ RUN apt-get update -qy && \
     apt-get install -y nodejs && \
     apt-get clean
 
-RUN mkdir /app && ln -fs /tmp /app
-
 COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
 COPY --from=builder /app /app/
+
+RUN mv /app/tmp / && ln -fs /tmp /app
 
 WORKDIR /app
 
