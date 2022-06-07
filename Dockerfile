@@ -33,7 +33,7 @@ RUN apt-get update -qy && \
 COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
 COPY --from=builder /app /app/
 
-RUN mv /app/tmp / && ln -fs /tmp /app
+RUN cp -r /app/tmp/* /tmp && rm -rf /app/tmp && ln -fs /tmp /app/tmp
 
 WORKDIR /app
 
