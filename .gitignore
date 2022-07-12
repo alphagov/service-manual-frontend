@@ -16,8 +16,10 @@
 !/log/.keep
 /tmp
 coverage
-/public/assets
 
-# Yarn
+# Ignore JavaScript dependencies
 /node_modules
 /yarn-error.log
+
+# Ignore compiled assets
+/public/assets
