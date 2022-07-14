@@ -1,0 +1,19 @@
+{
+  "srcDir": "public/assets/service-manual-frontend",
+  "srcFiles": [
+    "application-*.js"
+  ],
+  "cssFiles": [
+    "application-*.css"
+  ],
+  "specDir": "spec/javascripts",
+  "specFiles": [
+    "**/*[sS]pec.js"
+  ],
+  "helpers": [
+    "vendor/jquery-1.11.3.min.js",
+    "vendor/jasmine-jquery.js",
+    "helpers/*.js"
+  ],
+  "browser": "headlessChrome"
+}
