@@ -407,6 +407,7 @@ DEPENDENCIES
   sassc-rails
   simplecov
   slimmer
+  sprockets-rails
   uglifier
   webmock
 

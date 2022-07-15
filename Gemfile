@@ -10,6 +10,7 @@ gem "rails-i18n"
 gem "rails_translation_manager"
 gem "sassc-rails"
 gem "slimmer"
+gem "sprockets-rails"
 gem "uglifier"
 
 group :development, :test do
