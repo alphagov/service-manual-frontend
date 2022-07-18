@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "6.1.6.1"
+gem "rails", "7.0.3.1"
 
 gem "gds-api-adapters"
 gem "govuk_app_config"
@@ -10,6 +10,7 @@ gem "rails-i18n"
 gem "rails_translation_manager"
 gem "sassc-rails"
 gem "slimmer"
+gem "sprockets-rails"
 gem "uglifier"
 
 group :development, :test do
