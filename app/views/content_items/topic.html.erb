@@ -26,9 +26,24 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <% if @content_item.display_as_accordion? %>
-        <%= render "govuk_publishing_components/components/accordion", {
-          items: @content_item.accordion_content
-        } %>
+        <div data-module="gem-track-click gtm-click-tracking">
+          <div data-module="toggle-attribute">
+            <%
+              show_all_attributes = {
+                event_name: "select_content",
+                type: "accordion",
+                index: 0,
+                index_total: 0
+              }
+            %>
+            <%= render "govuk_publishing_components/components/accordion", {
+              data_attributes_show_all: {
+                    "ga4": show_all_attributes.to_json
+                  },
+              items: @content_item.accordion_content
+            } %>
+          </div>
+        </div>
       <% else %>
         <% @content_item.groups.each_with_index do |link_group| %>
           <% if link_group.name.present? %>

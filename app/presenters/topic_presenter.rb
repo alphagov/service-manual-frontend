@@ -51,9 +51,18 @@ class TopicPresenter < ContentItemPresenter
     # supplied by the `groups` method.
 
     groups.map do |section|
-      {
+      {     
         heading: {
           text: section.name,
+        },
+        data_attributes: {
+          ga4: {
+            event_name: 'select_content',
+            type: 'accordion',
+            text: section.name,
+            index: index,
+            index_total: 
+          }
         },
         summary: {
           text: section.description,
