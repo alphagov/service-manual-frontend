@@ -50,8 +50,18 @@ class TopicPresenter < ContentItemPresenter
     # This method returns the content in the required shape from the hash
     # supplied by the `groups` method.
 
-    groups.map do |section|
+    groups.each.with_index(1).map do |section, index|
       {
+        data_attributes: {
+          module: "gtm-track-click",
+          ga4: {
+            event_name: "select_content",
+            type: "accordion",
+            text: section.name,
+            index: index,
+            index_total: groups.length,
+          },
+        },
         heading: {
           text: section.name,
         },

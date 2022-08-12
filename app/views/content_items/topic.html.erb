@@ -26,8 +26,21 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <% if @content_item.display_as_accordion? %>
+        <% items = @content_item.accordion_content %>
+        <%
+          ga4_attributes = {
+            event_name: "select_content",
+            type: "accordion",
+            text: "Show all sections",
+            index: 0,
+            index_total: items.length,
+          }
+        %>
         <%= render "govuk_publishing_components/components/accordion", {
-          items: @content_item.accordion_content
+          data_attributes_show_all: {
+            "ga4": ga4_attributes.to_json
+          },
+          items: items,
         } %>
       <% else %>
         <% @content_item.groups.each_with_index do |link_group| %>
