@@ -29,6 +29,16 @@ class TopicPresenterTest < ActiveSupport::TestCase
   test "returns accordion content data" do
     accordion_content = presented_topic.accordion_content
     first_accordion_section = {
+      data_attributes: {
+        module: "gtm-track-click",
+        ga4: {
+          event_name: "select_content",
+          type: "accordion",
+          text: "Group 1",
+          index: 1,
+          index_total: 2,
+        },
+      },
       heading: { text: "Group 1" },
       summary: { text: "The first group" },
       content: { html: "<ul class=\"govuk-list\">\n<li><a class=\"govuk-link\" href=\"/service-manual/user-centred-design/accessibility\">Accessibility</a></li>\n<li><a class=\"govuk-link\" href=\"/service-manual/user-centred-design/resources/patterns/addresses\">Addresses</a></li>\n</ul>" },
