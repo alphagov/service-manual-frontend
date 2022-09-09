@@ -58,7 +58,7 @@ class TopicPresenter < ContentItemPresenter
             event_name: "select_content",
             type: "accordion",
             text: section.name,
-            index: index,
+            index:,
             index_total: groups.length,
           },
         },

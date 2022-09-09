@@ -43,7 +43,7 @@ class ContentItemsControllerTest < ActionController::TestCase
 
     stub_content_store_does_not_have_item("/#{path}")
 
-    get :show, params: { path: path }
+    get :show, params: { path: }
     assert_response :not_found
   end
 
@@ -52,7 +52,7 @@ class ContentItemsControllerTest < ActionController::TestCase
     url = "#{content_store_endpoint}/content/#{path}"
     stub_request(:get, url).to_return(status: 403, headers: {})
 
-    get :show, params: { path: path }
+    get :show, params: { path: }
     assert_response :forbidden
   end
 
@@ -89,7 +89,7 @@ class ContentItemsControllerTest < ActionController::TestCase
       application does not support.
     ERROR
 
-    stub_content_store_has_item(base_path, { base_path: base_path, document_type: "service_manual_some_type" })
+    stub_content_store_has_item(base_path, { base_path:, document_type: "service_manual_some_type" })
 
     error = assert_raises(RuntimeError) { get :show, params: { path: base_path.delete_prefix("/") } }
     assert_match error_message, error.message
@@ -103,7 +103,7 @@ class ContentItemsControllerTest < ActionController::TestCase
       application does not support.
     ERROR
 
-    stub_content_store_has_item(base_path, { base_path: base_path, document_type: "homepage" })
+    stub_content_store_has_item(base_path, { base_path:, document_type: "homepage" })
 
     error = assert_raises(RuntimeError) { get :show, params: { path: base_path.delete_prefix("/") } }
     assert_match error_message, error.message
