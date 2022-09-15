@@ -36,6 +36,9 @@
           }
         %>
         <%= render "govuk_publishing_components/components/accordion", {
+          data_attributes: {
+            module: "ga4-event-tracker",
+          },
           data_attributes_show_all: {
             "ga4": ga4_attributes.to_json
           },

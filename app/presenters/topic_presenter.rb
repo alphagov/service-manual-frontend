@@ -53,7 +53,6 @@ class TopicPresenter < ContentItemPresenter
     groups.each.with_index(1).map do |section, index|
       {
         data_attributes: {
-          module: "ga4-event-tracker",
           ga4: {
             event_name: "select_content",
             type: "accordion",

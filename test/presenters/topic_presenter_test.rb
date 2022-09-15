@@ -30,7 +30,6 @@ class TopicPresenterTest < ActiveSupport::TestCase
     accordion_content = presented_topic.accordion_content
     first_accordion_section = {
       data_attributes: {
-        module: "ga4-event-tracker",
         ga4: {
           event_name: "select_content",
           type: "accordion",
