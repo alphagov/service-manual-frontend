@@ -71,7 +71,7 @@ private
   end
 
   def content_store
-    @content_store ||= GdsApi::ContentStore.new(Plek.current.find("content-store"))
+    @content_store ||= GdsApi::ContentStore.new(Plek.find("content-store"))
   end
 
   def configure_header_search
