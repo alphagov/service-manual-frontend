@@ -26,7 +26,7 @@ end
 
 group :test do
   gem "capybara"
-  gem "govuk-content-schema-test-helpers"
+  gem "govuk_schemas"
   gem "pry-byebug"
   gem "rails-controller-testing"
   gem "simplecov"

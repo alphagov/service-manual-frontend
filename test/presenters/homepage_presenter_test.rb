@@ -26,9 +26,7 @@ private
 
   def presented_homepage(overriden_attributes = {})
     HomepagePresenter.new(
-      JSON.parse(
-        GovukContentSchemaTestHelpers::Examples.new.get("service_manual_homepage", "service_manual_homepage"),
-      ).merge(overriden_attributes),
+      GovukSchemas::Example.find("service_manual_homepage", example_name: "service_manual_homepage").merge(overriden_attributes),
     )
   end
 end

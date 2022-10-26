@@ -73,13 +73,9 @@ class ServiceStandardPresenterTest < ActiveSupport::TestCase
 private
 
   def presented_standard(overriden_attributes = {})
-    example = GovukContentSchemaTestHelpers::Examples.new.get(
-      "service_manual_service_standard",
-      "service_manual_service_standard",
-    )
+    example = GovukSchemas::Example.find("service_manual_service_standard", example_name: "service_manual_service_standard")
 
-    example_with_overrides = JSON.parse(example)
-      .merge(overriden_attributes.with_indifferent_access)
+    example_with_overrides = example.merge(overriden_attributes.with_indifferent_access)
 
     ServiceStandardPresenter.new(example_with_overrides)
   end
