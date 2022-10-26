@@ -2,12 +2,7 @@ require "test_helper"
 
 class TopicTest < ActionDispatch::IntegrationTest
   setup do
-    @topic_example = JSON.parse(
-      GovukContentSchemaTestHelpers::Examples.new.get(
-        "service_manual_topic",
-        "service_manual_topic",
-      ),
-    )
+    @topic_example = GovukSchemas::Example.find("service_manual_topic", example_name: "service_manual_topic")
   end
 
   test "it uses topic description as meta description" do

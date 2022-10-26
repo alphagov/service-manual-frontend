@@ -35,12 +35,9 @@ class GuidePresenterTest < ActiveSupport::TestCase
   end
 
   test "#category_title is the title of the parent for a point" do
-    example = GovukContentSchemaTestHelpers::Examples.new.get(
-      "service_manual_guide",
-      "point_page",
-    )
+    example = GovukSchemas::Example.find("service_manual_guide", example_name: "point_page")
 
-    presenter = GuidePresenter.new(JSON.parse(example))
+    presenter = GuidePresenter.new(example)
 
     assert presenter.category_title, "The Service Standard"
   end
@@ -154,7 +151,7 @@ private
 
   def presented_guide(overriden_attributes = {}, example = "service_manual_guide")
     GuidePresenter.new(
-      JSON.parse(GovukContentSchemaTestHelpers::Examples.new.get("service_manual_guide", example)).merge(overriden_attributes),
+      GovukSchemas::Example.find("service_manual_guide", example_name: example).merge(overriden_attributes),
     )
   end
 end

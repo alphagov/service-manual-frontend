@@ -117,8 +117,6 @@ GEM
       rest-client (~> 2.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    govuk-content-schema-test-helpers (1.6.1)
-      json-schema (~> 2.8.0)
     govuk_app_config (4.9.0)
       logstasher (~> 2.1)
       plek (~> 4)
@@ -140,6 +138,8 @@ GEM
       rails (>= 6)
       rouge
       sprockets (>= 3)
+    govuk_schemas (4.4.1)
+      json-schema (~> 2.8.0)
     govuk_test (3.0.1)
       brakeman (>= 5.0.2)
       capybara (>= 3.36)
@@ -386,9 +386,9 @@ DEPENDENCIES
   binding_of_caller
   capybara
   gds-api-adapters
-  govuk-content-schema-test-helpers
   govuk_app_config
   govuk_publishing_components
+  govuk_schemas
   govuk_test
   listen
   plek

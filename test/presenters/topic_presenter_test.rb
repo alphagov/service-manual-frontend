@@ -90,9 +90,8 @@ class TopicPresenterTest < ActiveSupport::TestCase
 private
 
   def presented_topic(overriden_attributes = {})
-    parsed = JSON.parse(GovukContentSchemaTestHelpers::Examples.new.get("service_manual_topic", "service_manual_topic"))
     TopicPresenter.new(
-      parsed.merge(overriden_attributes.with_indifferent_access),
+      GovukSchemas::Example.find("service_manual_topic", example_name: "service_manual_topic").merge(overriden_attributes.with_indifferent_access),
     )
   end
 end
