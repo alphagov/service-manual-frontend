@@ -11,7 +11,6 @@
 
 <!--
 ## Pages to check
-
 * /service-manual/
 * /service-manual/helping-people-to-use-your-service
 * /service-manual/design
@@ -20,5 +19,6 @@
 * /service-manual/service-standard/point-1-understand-user-needs
 * /service-manual/communities
 * /service-manual/communities/accessibility-community
-
 -->
+
+Follow [these steps](https://guides.rubyonrails.org/upgrading_ruby_on_rails.html) if you are doing a major Rails upgrade.
