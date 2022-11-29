@@ -26,7 +26,7 @@ module GovukContentSchemaExamples
   end
 
   def govuk_content_schema_example(schema_name, example_name, overrides = {})
-    GovukSchemas::Example.find(schema_name, example_name: example_name).deep_merge(overrides.stringify_keys)
+    GovukSchemas::Example.find(schema_name, example_name:).deep_merge(overrides.stringify_keys)
   end
 
   module ClassMethods
