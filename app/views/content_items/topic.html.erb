@@ -27,21 +27,8 @@
     <div class="govuk-grid-column-two-thirds">
       <% if @content_item.display_as_accordion? %>
         <% items = @content_item.accordion_content %>
-        <%
-          ga4_attributes = {
-            event_name: "select_content",
-            type: "accordion",
-            index: 0,
-            index_total: items.length,
-          }
-        %>
         <%= render "govuk_publishing_components/components/accordion", {
-          data_attributes: {
-            module: "ga4-event-tracker",
-          },
-          data_attributes_show_all: {
-            "ga4": ga4_attributes.to_json
-          },
+          ga4_tracking: true,
           items: items,
         } %>
       <% else %>
