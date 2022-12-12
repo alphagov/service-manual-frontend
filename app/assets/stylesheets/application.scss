@@ -14,7 +14,6 @@ $govuk-include-default-font-face: false;
 @import "govuk_publishing_components/components/phase-banner";
 
 @import "mixins/margins";
-@import "mixins/print";
 
 // CSS that could be better, mostly overriding Slimmer...
 @import "hacks/full-width";
