@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gem "rails", "7.0.4"
 
 gem "gds-api-adapters"
-gem "govuk_app_config"
+gem "govuk_app_config", github: "alphagov/govuk_app_config", branch: "csp-modernisation"
 gem "govuk_publishing_components"
 gem "plek"
 gem "rails-i18n"
