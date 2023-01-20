@@ -4,7 +4,7 @@ gem "rails", "7.0.4.1"
 
 gem "bootsnap", require: false
 gem "gds-api-adapters"
-gem "govuk_app_config"
+gem "govuk_app_config", github: "alphagov/govuk_app_config", branch: "aspirational-csp"
 gem "govuk_publishing_components"
 gem "mail", "~> 2.7.1" # TODO: remove once https://github.com/mikel/mail/issues/1489 is fixed.
 gem "plek"
