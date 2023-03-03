@@ -1,5 +1,7 @@
 # Service Manual Frontend
 
+> **Service Manual Frontend is retired and all service manual pages are now being rendered by [Government Frontend](https://github.com/alphagov/government-frontend/).**
+
 A public-facing GOV.UK application used to display the [service manual](https://www.gov.uk/service-manual) with content fetched from the [Content Store](https://github.com/alphagov/content-store).
 
 ## Live examples
